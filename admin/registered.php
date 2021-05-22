@@ -56,7 +56,7 @@ include('config/dbcon.php');
       </div>
     </div>
   </div>
-  <!-- Delete User -->
+  <!-- End User Modal -->
 
   <!--User Modal -->
   <div class="modal fade" id="DeletModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -208,7 +208,8 @@ include('config/dbcon.php');
 <?php include('includes/script.php'); ?>
 
 <script>
-  $(document).ready(function()){
+  $(document).ready(function() 
+  {
     
     $('.email_id').keyup(function (e){
       var email = $('.email_id').val();
@@ -216,7 +217,8 @@ include('config/dbcon.php');
       $.ajax({
         type: "POST",
         url: "code.php",
-        data: {
+        data: 
+        {
           'check_Emailbtn':1,
           'email':email,
         },

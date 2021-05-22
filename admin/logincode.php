@@ -19,7 +19,7 @@ if(isset($_POST['login_btn']))
             $user_email = $row['email'];
             $user_phone = $row['phonenumber'];
             $uType_ID = $row['uType_ID'];
-        }
+        } 
 
         $_SESSION['auth'] = "$uType_ID";
         $_SESSION['auth_user'] = [

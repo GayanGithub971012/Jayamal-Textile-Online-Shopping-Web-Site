@@ -43,29 +43,6 @@
               </p>
             </a>
           </li>
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Collections
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="category.php" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Category</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="product.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Product</p>
-                </a>
-              </li>
-            </ul>
-          </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
@@ -76,43 +53,49 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/tables/simple.html" class="nav-link">
+                <a href="./customer.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Customer Table</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/tables/data.html" class="nav-link">
+                <a href="./categoryprice.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Category Price Table</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/tables/jsgrid.html" class="nav-link">
+                <a href="./customizeduniform.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>CustomizedUniform Table</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/tables/jsgrid.html" class="nav-link">
+                <a href="./uniform.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Uniform Table</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/tables/jsgrid.html" class="nav-link">
+                <a href="./fabric.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Fabrics Table</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/tables/jsgrid.html" class="nav-link">
+                <a href="./feedback.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Feedback Table</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/tables/jsgrid.html" class="nav-link">
+                <a href="./orders.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Orders Table</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./orderdetails.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Order Details Table</p>
                 </a>

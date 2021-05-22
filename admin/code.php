@@ -69,19 +69,6 @@ if(isset($_POST['cate_delete_btn']))
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 if(isset($_POST['logout_btn']))
 {
     //session_destroy();
@@ -151,6 +138,59 @@ if(isset($_POST['addUser']))
         }
 
         
+    }
+    else
+    {
+        $_SESSION['status'] = "Password and confirm password does not match.!";
+        header("Location: registered.php");
+    }
+
+    
+
+}
+
+if(isset($_POST['addUser_website']))
+{
+    $firstname = $_POST['firstname'];
+    $lastname = $_POST['lastname'];
+    $username = $_POST['username'];
+    $phone = $_POST['phonenumber'];
+    $address = $_POST['address'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $confirmpassword = $_POST['confirmpassword'];
+
+    if($password == $confirmpassword)
+    {
+
+        $checkemail = "SELECT email FROM users WHERE email='$email'";
+        $checkemail_run = mysqli_query($con, $checkemail);
+
+        if(mysqli_num_rows($checkemail_run)>0)
+        {
+            //Taken Already exists
+            $_SESSION['status'] = "Email id is already taken.!";
+            header("Location: signup.php");
+        }
+        else
+        {
+            //Available = Record not found
+            $user_query = "INSERT INTO users (username,phonenumber,email,password) VALUES ('$username','$phone','$email','$password')";
+            $user_query_run = mysqli_query($con, $user_query);
+            $user_query1 = "INSERT INTO customer (firstname,lastname,address) VALUES ('$firstname','$lastname','$address')";
+            $user_query_run1 = mysqli_query($con, $user_query1);
+
+            if($user_query_run)
+            {
+                $_SESSION['status'] = "User Added Successfully";
+                header("Location: login.php");
+            }
+            else
+            {
+                $_SESSION['status'] = "User Registration Failed";
+                header("Location: signup.php");
+            }
+        }    
     }
     else
     {

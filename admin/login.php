@@ -33,7 +33,7 @@ if(isset($_SESSION['auth']))
                 include('message.php');
             ?>
                 <div class="card my-5">
-                    <div class="card-header bg-light">
+                    <div class="card-header bg-warning">
                         <h5>Login Form</h5>
                     </div>
                     <div class="card-body">
@@ -48,7 +48,7 @@ if(isset($_SESSION['auth']))
                             </div>
                             <hr>
                             <div class="modal-footer">
-                                <button type="submit" name="login_btn" class="btn btn-primary btn-block">Login</button>
+                                <button type="submit" name="login_btn" class="btn btn-dark btn-block">Login</button>
                             </div>
                         </form>
                     </div>
@@ -60,4 +60,3 @@ if(isset($_SESSION['auth']))
 
 
 <?php include('includes/script.php'); ?>
-<?php include('includes/footer.php'); ?>
