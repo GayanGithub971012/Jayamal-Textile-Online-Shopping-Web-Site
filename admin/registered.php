@@ -74,8 +74,8 @@ include('config/dbcon.php');
             <p>
               Are you sure. you want to delete this data?
             </p>
-            </div>
-           <div class="modal-footer">
+          </div>
+          <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <button type="submit" name="DeleteUserbtn" class="btn btn-primary">Yes, Delete.!</button>
           </div>
@@ -83,7 +83,7 @@ include('config/dbcon.php');
       </div>
     </div>
   </div>
-    <!-- Delete User -->
+  <!-- Delete User -->
 
 
 
@@ -109,19 +109,17 @@ include('config/dbcon.php');
       <div class="row">
         <div class="col-md-12">
           <?php
-          if(isset($_SESSION['status']))
-          {
-            echo "<h1>".$_SESSION['status']."</h1>";
+          if (isset($_SESSION['status'])) {
+            echo "<h1>" . $_SESSION['status'] . "</h1>";
             unset($_SESSION['status']);
           }
-        ?>
+          ?>
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">
                 Registered User
               </h3>
-              <a href="# " data-toggle="modal" data-target="#AddUserModal"
-                class="btn btn-primary btn-sm float-right">Add User</a>
+              <a href="# " data-toggle="modal" data-target="#AddUserModal" class="btn btn-primary btn-sm float-right">Add User</a>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -138,62 +136,52 @@ include('config/dbcon.php');
                 </thead>
                 <tbody>
                   <?php
-                $query = "SELECT * FROM users";
-                $query_run = mysqli_query($con, $query);
+                  $query = "SELECT * FROM users";
+                  $query_run = mysqli_query($con, $query);
 
-                if(mysqli_num_rows($query_run)>0)
-                {
-                  foreach($query_run as $row)
-                  {
+                  if (mysqli_num_rows($query_run) > 0) {
+                    foreach ($query_run as $row) {
                   ?>
 
-                  <tr>
-                    <td>
-                      <?php echo $row['user_ID'] ?>
-                    </td>
-                    <td>
-                      <?php echo $row['username'] ?>
-                    </td>
-                    <td>
-                      <?php echo $row['email'] ?>
-                    </td>
-                    <td>
-                      <?php echo $row['phonenumber'] ?>
-                    </td>
-                    <td>
-                      <?php 
-                      if($row['uType_ID'] == "2")
-                      {
-                          echo "User";
-                      }
-                      elseif($row['uType_ID'] == "1")
-                      {
-                          echo "Admin";
-                      }
-                      else
-                      {
-                          echo "Invalid User";
-                      }
+                      <tr>
+                        <td>
+                          <?php echo $row['user_ID'] ?>
+                        </td>
+                        <td>
+                          <?php echo $row['username'] ?>
+                        </td>
+                        <td>
+                          <?php echo $row['email'] ?>
+                        </td>
+                        <td>
+                          <?php echo $row['phonenumber'] ?>
+                        </td>
+                        <td>
+                          <?php
+                          if ($row['uType_ID'] == "2") {
+                            echo "User";
+                          } elseif ($row['uType_ID'] == "1") {
+                            echo "Admin";
+                          } else {
+                            echo "Invalid User";
+                          }
+                          ?>
+                        </td>
+                        <td>
+                          <a href="registered-edit.php?user_id=<?php echo $row['user_ID']; ?>" class="btn btn-info btn-sm">Edit</a>
+                          <button type="button" value="<?php echo $row['user_ID']; ?>" class="btn btn-danger btn-sm deletebtn">Delete</a>
+                        </td>
+                        </td>
+                      <?php
+                    }
+                  } else {
                       ?>
-                    </td>
-                    <td>
-                      <a href="registered-edit.php?user_id=<?php echo $row['user_ID']; ?>"
-                        class="btn btn-info btn-sm">Edit</a>
-                      <button type="button" value="<?php echo $row['user_ID']; ?>" class="btn btn-danger btn-sm deletebtn">Delete</a>
-                    </td>
-                    </td>
+                      <tr>
+                        <td>No Record Found</td>
+                      </tr>
                     <?php
                   }
-                }
-                else
-                {
-                ?>
-                  <tr>
-                    <td>No Record Found</td>
-                  </tr>
-                  <?php
-                }
-                ?>
+                    ?>
                 </tbody>
               </table>
             </div>
@@ -208,28 +196,24 @@ include('config/dbcon.php');
 <?php include('includes/script.php'); ?>
 
 <script>
-  $(document).ready(function() 
-  {
-    
-    $('.email_id').keyup(function (e){
+  $(document).ready(function() {
+
+    $('.email_id').keyup(function(e) {
       var email = $('.email_id').val();
 
       $.ajax({
         type: "POST",
         url: "code.php",
-        data: 
-        {
-          'check_Emailbtn':1,
-          'email':email,
+        data: {
+          'check_Emailbtn': 1,
+          'email': email,
         },
-        success: function (response){
+        success: function(response) {
           $('.email_error').text(response);
         }
       });
     });
   });
-  
-
 </script>
 
 
@@ -237,8 +221,8 @@ include('config/dbcon.php');
 
 
 <script>
-  $(document).ready(function (){
-    $('.deletebtn').click(function (e){
+  $(document).ready(function() {
+    $('.deletebtn').click(function(e) {
       e.preventDefault();
 
       var user_id = $(this).val();

@@ -41,18 +41,16 @@ include('includes/sidebar.php');
                                     $query = "SELECT * FROM customer";
                                     $query_run = mysqli_query($con, $query);
 
-                                    if(mysqli_num_rows($query_run) > 0 )
-                                    {
-                                        foreach($query_run as $uni)
-                                        {
-                                            ?>
+                                    if (mysqli_num_rows($query_run) > 0) {
+                                        foreach ($query_run as $uni) {
+                                    ?>
                                             <tr>
-                                                <td><?= $uni['uniform_ID']?></td>
-                                                <td><?= $uni['firstname']?></td>
-                                                <td><?= $uni['lastname']?></td>
-                                                <td><?= $uni['address']?></td>
+                                                <td><?= $uni['uniform_ID'] ?></td>
+                                                <td><?= $uni['firstname'] ?></td>
+                                                <td><?= $uni['lastname'] ?></td>
+                                                <td><?= $uni['address'] ?></td>
                                                 <td>
-                                                    <a href="product-edit.php?prod_id=<?php echo $prod_item['id']; ?>"class="btn btn-success">Edit</a>
+                                                    <a href="product-edit.php?prod_id=<?php echo $prod_item['id']; ?>" class="btn btn-success">Edit</a>
                                                 </td>
                                                 <td>
                                                     <form action="code.php" method="POST">
@@ -61,22 +59,20 @@ include('includes/sidebar.php');
                                                     </form>
                                                 </td>
                                             </tr>
-                                            <?php
+                                        <?php
                                         }
-                                    }
-                                    else
-                                    {
+                                    } else {
                                         ?>
                                         <tr>
                                             <td colspan="6">No Record Found</td>
                                         </tr>
-                                        <?php
+                                    <?php
                                     }
                                     ?>
-                                    
+
                                 </tbody>
                             </table>
-                        
+
                         </div>
                     </div>
                 </div>

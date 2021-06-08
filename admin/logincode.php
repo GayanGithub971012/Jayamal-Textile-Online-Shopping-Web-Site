@@ -45,5 +45,3 @@ else
     $_SESSION['status'] = "Access Denied";
     header('Location: login.php');
 }
-
-?>

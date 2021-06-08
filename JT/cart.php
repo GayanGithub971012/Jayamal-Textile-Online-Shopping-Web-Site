@@ -4,30 +4,32 @@ include('config/dbcon.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Jayamal Textiles Web Page</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700"> 
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
+<head>
+  <title>Jayamal Textiles Web Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="css/jquery-ui.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/style-starter.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700">
+  <link rel="stylesheet" href="fonts/icomoon/style.css">
+  <link rel="shortcut icon" href="images/logo.png">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/magnific-popup.css">
+  <link rel="stylesheet" href="css/jquery-ui.css">
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="css/style-starter.css">
 
-    <link rel="stylesheet" href="css/aos.css">
+  <link rel="stylesheet" href="css/aos.css">
 
-    <link rel="stylesheet" href="css/style.css">
-    
-  </head>
-  <body>
-  
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
   <div class="site-wrap">
-  <header class="site-navbar" role="banner">
+    <header class="site-navbar" role="banner">
       <div class="site-navbar-top">
         <div class="container">
           <div class="row align-items-center">
@@ -51,6 +53,7 @@ include('config/dbcon.php');
                   <li>
                     <h5>Hello
                       <?php
+
                       if (isset($_SESSION['auth'])) {
                         echo $_SESSION['auth_user']['user_name'];
                       } else {
@@ -69,6 +72,8 @@ include('config/dbcon.php');
                         <form action="code.php" method="POST">
                           <button type="submit" name="login_btn" class="dropdown-item">Login</button>
                           <button type="submit" name="signup_btn" class="dropdown-item">Sign Up</button>
+                          <button type="submit" name="logout_btn" class="dropdown-item">Logout</button>
+                          <button type="submit" name="user_btn" class="dropdown-item">User Profile</button>
                           <button type="submit" name="adminlogin_btn" class="dropdown-item">Admin Panel</button>
                         </form>
                       </div>
@@ -79,10 +84,11 @@ include('config/dbcon.php');
                   </li>
                   <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
                   <li>
-                    <a href="cart.php" class="site-cart ">
+                    <a class="site-cart" href="cart.php">
                       <span class="icon icon-shopping_cart"></span>
-                      <span class="count bg-warning text-secondary">0</span>
+                      <span id="cart-item" class="count bg-warning text-secondary"></span>
                     </a>
+
                   </li>
                   <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
                 </ul>
@@ -200,13 +206,14 @@ include('config/dbcon.php');
     <div class="site-section">
       <div class="container">
         <div class="row mb-5">
-          <form class="col-md-12" method="post">
+          <form class="col-md-12 form-submit" method="post">
             <div class="site-blocks-table">
               <table class="table table-bordered">
                 <thead>
                   <tr>
-                    <th class="product-thumbnail">Image</th>
-                    <th class="product-name">Product</th>
+                    <th class="product-thumbnail">Order ID</th>
+                    <th class="product-name">Uniform ID</th>
+                    <th class="product-price">Selected Size</th>
                     <th class="product-price">Price</th>
                     <th class="product-quantity">Quantity</th>
                     <th class="product-total">Total</th>
@@ -214,115 +221,97 @@ include('config/dbcon.php');
                   </tr>
                 </thead>
                 <tbody>
+                  <?php
+                  if (isset($_SESSION['auth_user'])) {
+                    $user_id = $_SESSION['auth_user']['user_id'];
+                    $query = "SELECT * FROM orderdetails WHERE user_ID ='$user_id'";
+                    $query_run = mysqli_query($con, $query);
+                    $grand_total = 0;
+                    if (mysqli_num_rows($query_run) > 0) {
+                      foreach ($query_run as $uni) {
+
+                  ?>
+                        <tr>
+                          <td class="product-thumbnail">
+                            <h3 class="h6 text-black"><?= $uni['order_ID'] ?></h3>
+                          </td>
+                          <input type="hidden" class="o_id" value="<?= $uni['order_ID'] ?>">
+                          <td class="product-name">
+                            <h3 class="h6 text-black"><?= $uni['uniform_ID'] ?></h3>
+                          </td>
+                          <input type="hidden" class="u_id" value="<?= $uni['uniform_ID'] ?>">
+                          <td class="product-name">
+                            <h3 class="h6 text-black"><?= $uni['selected_size'] ?></h3>
+                          </td>
+                          <input type="hidden" class="u_size" value="<?= $uni['selected_size'] ?>">
+
+                          <td class="h6">Rs. <?= number_format($uni['price'], 2); ?></td>
+                          <input type="hidden" class="price" value="<?= $uni['price'] ?>">
+                          <td>
+                            <input type="number" class="h6 form-control itemQty" value="<?= $uni['quantity'] ?>" style="width:120px;">
+                          </td>
+                          <td class="h6">Rs. <?= number_format($uni['total_price'], 2); ?></td>
+                          <td><a href="code.php?remove=<?= $uni['order_ID'] ?>" class="btn btn-dark btn-sm" onclick="return confirm('Are you sure want to remove this item?');">X</a></td>
+                        </tr>
+                        <?php $grand_total += $uni['total_price']; ?>
+
+                      <?php
+                      }
+                    } else {
+                      ?>
+                <tbody>
                   <tr>
-                    <td class="product-thumbnail">
-                      <img src="images/cloth_1.jpg" alt="Image" class="img-fluid">
-                    </td>
-                    <td class="product-name">
-                      <h2 class="h5 text-black">Top Up T-Shirt</h2>
-                    </td>
-                    <td>$49.00</td>
-                    <td>
-                      <div class="input-group mb-3" style="max-width: 120px;">
-                        <div class="input-group-prepend">
-                          <button class="btn btn-outline-dark js-btn-minus" type="button">&minus;</button>
-                        </div>
-                        <input type="text" class="form-control text-center" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                        <div class="input-group-append">
-                          <button class="btn btn-outline-dark js-btn-plus" type="button">&plus;</button>
-                        </div>
-                      </div>
-
-                    </td>
-                    <td>$49.00</td>
-                    <td><a href="#" class="btn btn-dark btn-sm">X</a></td>
-                  </tr>
-
-                  <tr>
-                    <td class="product-thumbnail">
-                      <img src="images/cloth_2.jpg" alt="Image" class="img-fluid">
-                    </td>
-                    <td class="product-name">
-                      <h2 class="h5 text-black">Polo Shirt</h2>
-                    </td>
-                    <td>$49.00</td>
-                    <td>
-                      <div class="input-group mb-3" style="max-width: 120px;">
-                        <div class="input-group-prepend">
-                          <button class="btn btn-outline-dark js-btn-minus" type="button">&minus;</button>
-                        </div>
-                        <input type="text" class="form-control text-center" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                        <div class="input-group-append">
-                          <button class="btn btn-outline-dark js-btn-plus" type="button">&plus;</button>
-                        </div>
-                      </div>
-
-                    </td>
-                    <td>$49.00</td>
-                    <td><a href="#" class="btn btn-dark btn-sm">X</a></td>
+                    <td colspan="7">No Record Found</td>
                   </tr>
                 </tbody>
+            <?php
+                    }
+                  }
+            ?>
+
+            </tbody>
               </table>
             </div>
+            <div class="col-md-12">
+              <div class="row mb-5">
+                <div class="col-md-4">
+                  <a class="btn btn-outline-dark  btn-block" href="uniform.php" role="button">Continue Shopping</a>
+                </div>
+                <div class="col-md-4">
+                  <a href="checkout.php?user_id=<?php echo $user_id; ?>" class="btn btn-dark  btn-block <?= ($grand_total > 1) ? '' : 'disabled'; ?>">Proceed To Checkout</a>
+                </div>
+                <div class="col-md-4 pl-5">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="row">
+                        <div class="col-md-12 text-right border-bottom mb-5">
+                          <h3 class="text-black h4 text-uppercase">Cart Totals</h3>
+                        </div>
+                      </div>
+                      <div class="row mb-5">
+                        <div class="col-md-6">
+                          <span class="h4 text-black">Grand Total</span>
+                        </div>
+                        <div class="col-md-6 text-right">
+                          <?php
+                          if (isset($_SESSION['auth_user'])) {
+                          ?>
+                            <strong class="h4 text-black">Rs. <?= number_format($grand_total, 2); ?></strong>
+                          <?php
+                          } else {
+                          ?>
+                            <strong class="h4 text-black">Rs. 0.00</strong>
+                          <?php
+                          }
+                          ?>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </form>
-        </div>
-
-        <div class="row">
-          <div class="col-md-6">
-            <div class="row mb-5">
-              <div class="col-md-6 mb-3 mb-md-0">
-                <button class="btn btn-dark btn-sm btn-block">Update Cart</button>
-              </div>
-              <div class="col-md-6">
-                <button class="btn btn-outline-dark btn-sm btn-block">Continue Shopping</button>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <label class="text-black h4" for="coupon">Coupon</label>
-                <p>Enter your coupon code if you have one.</p>
-              </div>
-              <div class="col-md-8 mb-3 mb-md-0">
-                <input type="text" class="form-control py-3" id="coupon" placeholder="Coupon Code">
-              </div>
-              <div class="col-md-4">
-                <button class="btn btn-dark btn-sm">Apply Coupon</button>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 pl-5">
-            <div class="row justify-content-end">
-              <div class="col-md-7">
-                <div class="row">
-                  <div class="col-md-12 text-right border-bottom mb-5">
-                    <h3 class="text-black h4 text-uppercase">Cart Totals</h3>
-                  </div>
-                </div>
-                <div class="row mb-3">
-                  <div class="col-md-6">
-                    <span class="text-black">Subtotal</span>
-                  </div>
-                  <div class="col-md-6 text-right">
-                    <strong class="text-black">$230.00</strong>
-                  </div>
-                </div>
-                <div class="row mb-5">
-                  <div class="col-md-6">
-                    <span class="text-black">Total</span>
-                  </div>
-                  <div class="col-md-6 text-right">
-                    <strong class="text-black">$230.00</strong>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-md-12">
-                    <button class="btn btn-dark btn-lg py-3 btn-block" onclick="window.location='checkout.php'">Proceed To Checkout</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -346,7 +335,7 @@ include('config/dbcon.php');
                 </ul>
               </div>
             </div>
-          </div>  
+          </div>
           <div class="col-md-6 col-lg-6">
             <div class="block-5 mb-5">
               <h3 class="footer-heading mb-4">Contact Info</h3>
@@ -379,12 +368,61 @@ include('config/dbcon.php');
   <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/jquery-ui.js"></script>
   <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
+
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/jquery.magnific-popup.min.js"></script>
   <script src="js/aos.js"></script>
-
   <script src="js/main.js"></script>
-    
-  </body>
+
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js'></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+
+      // Send product details in the server
+      // Change the item quantity
+      $(".itemQty").on('change', function() {
+        var $el = $(this).closest('tr');
+
+        var o_id = $el.find(".o_id").val();
+        var price = $el.find(".price").val();
+        var qty = $el.find(".itemQty").val();
+        location.reload(true);
+        $.ajax({
+          url: 'code.php',
+          method: 'post',
+          cache: false,
+          data: {
+            qty: qty,
+            o_id: o_id,
+            price: price
+          },
+          success: function(response) {
+            console.log(response);
+          }
+        });
+      });
+
+      // Load total no.of items added in the cart and display in the navbar
+      load_cart_item_number();
+
+      function load_cart_item_number() {
+        $.ajax({
+          url: 'code.php',
+          method: 'get',
+          data: {
+            cartItem: "cart_item"
+          },
+          success: function(response) {
+            $("#cart-item").html(response);
+          }
+        });
+      }
+    });
+  </script>
+
+</body>
+
 </html>

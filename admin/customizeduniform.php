@@ -54,31 +54,29 @@ include('includes/sidebar.php');
                                     $query = "SELECT * FROM customizeduniform";
                                     $query_run = mysqli_query($con, $query);
 
-                                    if(mysqli_num_rows($query_run) > 0 )
-                                    {
-                                        foreach($query_run as $cus)
-                                        {
-                                            ?>
+                                    if (mysqli_num_rows($query_run) > 0) {
+                                        foreach ($query_run as $cus) {
+                                    ?>
                                             <tr>
-                                                <td><?= $cus['uniform_ID']?></td>
-                                                <td><?= $cus['color']?></td>
-                                                <td><?= $cus['design_image']?></td>
-                                                <td><?= $cus['institution']?></td>
-                                                <td><?= $cus['extra_note']?></td>
-                                                <td><?= $cus['shoulder_length']?></td>
-                                                <td><?= $cus['sleeve_length']?></td>
-                                                <td><?= $cus['sleeve_circumference']?></td>
-                                                <td><?= $cus['arm_hole']?></td>
-                                                <td><?= $cus['chest']?></td>
-                                                <td><?= $cus['waist']?></td>
-                                                <td><?= $cus['shoulder_to_waist']?></td>
-                                                <td><?= $cus['full_length']?></td>
-                                                <td><?= $cus['front_crotch']?></td>
-                                                <td><?= $cus['hip']?></td>
-                                                <td><?= $cus['bottom']?></td>
-                                                <td><?= $cus['fabric_type']?></td>
+                                                <td><?= $cus['uniform_ID'] ?></td>
+                                                <td><?= $cus['color'] ?></td>
+                                                <td><?= $cus['design_image'] ?></td>
+                                                <td><?= $cus['institution'] ?></td>
+                                                <td><?= $cus['extra_note'] ?></td>
+                                                <td><?= $cus['shoulder_length'] ?></td>
+                                                <td><?= $cus['sleeve_length'] ?></td>
+                                                <td><?= $cus['sleeve_circumference'] ?></td>
+                                                <td><?= $cus['arm_hole'] ?></td>
+                                                <td><?= $cus['chest'] ?></td>
+                                                <td><?= $cus['waist'] ?></td>
+                                                <td><?= $cus['shoulder_to_waist'] ?></td>
+                                                <td><?= $cus['full_length'] ?></td>
+                                                <td><?= $cus['front_crotch'] ?></td>
+                                                <td><?= $cus['hip'] ?></td>
+                                                <td><?= $cus['bottom'] ?></td>
+                                                <td><?= $cus['fabric_type'] ?></td>
                                                 <td>
-                                                    <a href="product-edit.php?prod_id=<?php echo $prod_item['id']; ?>"class="btn btn-success">Edit</a>
+                                                    <a href="product-edit.php?prod_id=<?php echo $prod_item['id']; ?>" class="btn btn-success">Edit</a>
                                                 </td>
                                                 <td>
                                                     <form action="code.php" method="POST">
@@ -87,22 +85,20 @@ include('includes/sidebar.php');
                                                     </form>
                                                 </td>
                                             </tr>
-                                            <?php
+                                        <?php
                                         }
-                                    }
-                                    else
-                                    {
+                                    } else {
                                         ?>
                                         <tr>
                                             <td colspan="19">No Record Found</td>
                                         </tr>
-                                        <?php
+                                    <?php
                                     }
                                     ?>
-                                    
+
                                 </tbody>
                             </table>
-                        
+
                         </div>
                     </div>
                 </div>

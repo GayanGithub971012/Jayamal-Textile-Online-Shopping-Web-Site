@@ -1,37 +1,34 @@
 <?php
-session_start(); 
+session_start();
 include('includes/header.php');
-if(isset($_SESSION['auth']))
-{
+if (isset($_SESSION['auth'])) {
     $_SESSION['status'] = "You are already logged in";
     header('Location: index.php');
     exit(0);
 }
 ?>
-<div class="section">
+<div class="section" style="background-image: url('assets/dist/img/bgimage_1.jpg');height: 100vh;">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-5 my-5">
-            <?php
-            if(isset($_SESSION['auth_status']))
-            {
-                ?>
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    <strong>Hey!</strong> <?php echo $_SESSION['auth_status']; ?>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
                 <?php
-                unset($_SESSION['auth_status']); 
-                
-            }   
+                if (isset($_SESSION['auth_status'])) {
+                ?>
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong>Hey!</strong> <?php echo $_SESSION['auth_status']; ?>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                <?php
+                    unset($_SESSION['auth_status']);
+                }
 
-            ?>
+                ?>
 
-            <?php
+                <?php
                 include('message.php');
-            ?>
+                ?>
                 <div class="card my-5">
                     <div class="card-header bg-warning">
                         <h5>Admin Login Form</h5>

@@ -42,19 +42,17 @@ include('includes/sidebar.php');
                                     $query = "SELECT * FROM orderdetails";
                                     $query_run = mysqli_query($con, $query);
 
-                                    if(mysqli_num_rows($query_run) > 0 )
-                                    {
-                                        foreach($query_run as $order)
-                                        {
-                                            ?>
+                                    if (mysqli_num_rows($query_run) > 0) {
+                                        foreach ($query_run as $order) {
+                                    ?>
                                             <tr>
-                                                <td><?= $order['order_ID']?></td>
-                                                <td><?= $order['uniform_ID']?></td>
-                                                <td><?= $order['selected_size']?></td>
-                                                <td><?= $order['quantity']?></td>
-                                                <td><?= $order['subTotal']?></td>
+                                                <td><?= $order['order_ID'] ?></td>
+                                                <td><?= $order['uniform_ID'] ?></td>
+                                                <td><?= $order['selected_size'] ?></td>
+                                                <td><?= $order['quantity'] ?></td>
+                                                <td><?= $order['subTotal'] ?></td>
                                                 <td>
-                                                    <a href="product-edit.php?prod_id=<?php echo $prod_item['id']; ?>"class="btn btn-success">Edit</a>
+                                                    <a href="product-edit.php?prod_id=<?php echo $prod_item['id']; ?>" class="btn btn-success">Edit</a>
                                                 </td>
                                                 <td>
                                                     <form action="code.php" method="POST">
@@ -63,22 +61,20 @@ include('includes/sidebar.php');
                                                     </form>
                                                 </td>
                                             </tr>
-                                            <?php
+                                        <?php
                                         }
-                                    }
-                                    else
-                                    {
+                                    } else {
                                         ?>
                                         <tr>
                                             <td colspan="7">No Record Found</td>
                                         </tr>
-                                        <?php
+                                    <?php
                                     }
                                     ?>
-                                    
+
                                 </tbody>
                             </table>
-                        
+
                         </div>
                     </div>
                 </div>

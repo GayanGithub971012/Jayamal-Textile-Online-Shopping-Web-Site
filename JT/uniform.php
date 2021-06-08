@@ -4,28 +4,31 @@ include('config/dbcon.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Jayamal Textiles Web Page</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700"> 
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
+<head>
+  <title>Jayamal Textiles Web Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="css/jquery-ui.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/style-starter.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700">
+  <link rel="stylesheet" href="fonts/icomoon/style.css">
+  <link rel="shortcut icon" href="images/logo.png">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/magnific-popup.css">
+  <link rel="stylesheet" href="css/jquery-ui.css">
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="css/style-starter.css">
 
-    <link rel="stylesheet" href="css/aos.css">
+  <link rel="stylesheet" href="css/aos.css">
 
-    <link rel="stylesheet" href="css/style.css">
-    
-  </head>
-  <body>
-  
+  <link rel="stylesheet" href="css/style.css">
+
+
+</head>
+
+<body>
+
   <div class="site-wrap">
     <header class="site-navbar" role="banner">
       <div class="site-navbar-top">
@@ -69,6 +72,8 @@ include('config/dbcon.php');
                         <form action="code.php" method="POST">
                           <button type="submit" name="login_btn" class="dropdown-item">Login</button>
                           <button type="submit" name="signup_btn" class="dropdown-item">Sign Up</button>
+                          <button type="submit" name="logout_btn" class="dropdown-item">Logout</button>
+                          <button type="submit" name="user_btn" class="dropdown-item">User Profile</button>
                           <button type="submit" name="adminlogin_btn" class="dropdown-item">Admin Panel</button>
                         </form>
                       </div>
@@ -79,9 +84,9 @@ include('config/dbcon.php');
                   </li>
                   <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
                   <li>
-                    <a href="cart.php" class="site-cart ">
+                    <a class="site-cart" href="cart.php">
                       <span class="icon icon-shopping_cart"></span>
-                      <span class="count bg-warning text-secondary">0</span>
+                      <span id="cart-item" class="count bg-warning text-secondary"></span>
                     </a>
                   </li>
                   <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
@@ -204,7 +209,9 @@ include('config/dbcon.php');
 
             <div class="row">
               <div class="col-md-12 mb-5">
-                <div class="float-md-left mb-4"><h2 class="text-black h5">Shop All</h2></div>
+                <div class="float-md-left mb-4">
+                  <h2 class="text-black h5">Shop All</h2>
+                </div>
                 <div class="d-flex">
                   <div class="dropdown mr-1 ml-md-auto">
                     <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -231,156 +238,37 @@ include('config/dbcon.php');
               </div>
             </div>
             <div class="row mb-5">
+              <?php
 
-              <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-                <div class="block-4 text-center border">
-                  <figure class="block-4-image">
-                    <a href="uniform-single.php"><img src="images/cloth_1.jpg" alt="Image placeholder" class="img-fluid"></a>
-                  </figure>
-                  <div class="block-4-text p-4">
-                    <h3><a href="uniform-single.php">Tank Top</a></h3>
-                    <p class="mb-0">Finding perfect t-shirt</p>
-                    <p class="text-primary font-weight-bold">$50</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-                <div class="block-4 text-center border">
-                  <figure class="block-4-image">
-                    <a href="uniform-single.php"><img src="images/shoe_1.jpg" alt="Image placeholder" class="img-fluid"></a>
-                  </figure>
-                  <div class="block-4-text p-4">
-                    <h3><a href="uniform-single.php">Corater</a></h3>
-                    <p class="mb-0">Finding perfect products</p>
-                    <p class="text-primary font-weight-bold">$50</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-                <div class="block-4 text-center border">
-                  <figure class="block-4-image">
-                    <a href="uniform-single.php"><img src="images/cloth_2.jpg" alt="Image placeholder" class="img-fluid"></a>
-                  </figure>
-                  <div class="block-4-text p-4">
-                    <h3><a href="uniform-single.php">Polo Shirt</a></h3>
-                    <p class="mb-0">Finding perfect products</p>
-                    <p class="text-primary font-weight-bold">$50</p>
-                  </div>
-                </div>
-              </div>
+              $query = "SELECT * FROM uniform";
+              $query_run = mysqli_query($con, $query);
 
-              <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-                <div class="block-4 text-center border">
-                  <figure class="block-4-image">
-                    <a href="uniform-single.php"><img src="images/cloth_3.jpg" alt="Image placeholder" class="img-fluid"></a>
-                  </figure>
-                  <div class="block-4-text p-4">
-                    <h3><a href="uniform-single.php">T-Shirt Mockup</a></h3>
-                    <p class="mb-0">Finding perfect products</p>
-                    <p class="text-primary font-weight-bold">$50</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-                <div class="block-4 text-center border">
-                  <figure class="block-4-image">
-                    <a href="uniform-single.php"><img src="images/shoe_1.jpg" alt="Image placeholder" class="img-fluid"></a>
-                  </figure>
-                  <div class="block-4-text p-4">
-                    <h3><a href="uniform-single.php">Corater</a></h3>
-                    <p class="mb-0">Finding perfect products</p>
-                    <p class="text-primary font-weight-bold">$50</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-                <div class="block-4 text-center border">
-                  <figure class="block-4-image">
-                    <a href="uniform-single.php"><img src="images/cloth_1.jpg" alt="Image placeholder" class="img-fluid"></a>
-                  </figure>
-                  <div class="block-4-text p-4">
-                    <h3><a href="uniform-single.php">Tank Top</a></h3>
-                    <p class="mb-0">Finding perfect t-shirt</p>
-                    <p class="text-primary font-weight-bold">$50</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-                <div class="block-4 text-center border">
-                  <figure class="block-4-image">
-                    <a href="uniform-single.php"><img src="images/shoe_1.jpg" alt="Image placeholder" class="img-fluid"></a>
-                  </figure>
-                  <div class="block-4-text p-4">
-                    <h3><a href="uniform-single.php">Corater</a></h3>
-                    <p class="mb-0">Finding perfect products</p>
-                    <p class="text-primary font-weight-bold">$50</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-                <div class="block-4 text-center border">
-                  <figure class="block-4-image">
-                    <a href="uniform-single.php"><img src="images/cloth_2.jpg" alt="Image placeholder" class="img-fluid"></a>
-                  </figure>
-                  <div class="block-4-text p-4">
-                    <h3><a href="uniform-single.php">Polo Shirt</a></h3>
-                    <p class="mb-0">Finding perfect products</p>
-                    <p class="text-primary font-weight-bold">$50</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-                <div class="block-4 text-center border">
-                  <figure class="block-4-image">
-                    <a href="uniform-single.php"><img src="images/cloth_3.jpg" alt="Image placeholder" class="img-fluid"></a>
-                  </figure>
-                  <div class="block-4-text p-4">
-                    <h3><a href="uniform-single.php">T-Shirt Mockup</a></h3>
-                    <p class="mb-0">Finding perfect products</p>
-                    <p class="text-primary font-weight-bold">$50</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-                <div class="block-4 text-center border">
-                  <figure class="block-4-image">
-                    <a href="uniform-single.php"><img src="images/shoe_1.jpg" alt="Image placeholder" class="img-fluid"></a>
-                  </figure>
-                  <div class="block-4-text p-4">
-                    <h3><a href="uniform-single.php">Corater</a></h3>
-                    <p class="mb-0">Finding perfect products</p>
-                    <p class="text-primary font-weight-bold">$50</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-                <div class="block-4 text-center border">
-                  <figure class="block-4-image">
-                    <a href="uniform-single.php"><img src="images/cloth_1.jpg" alt="Image placeholder" class="img-fluid"></a>
-                  </figure>
-                  <div class="block-4-text p-4">
-                    <h3><a href="uniform-single.php">Tank Top</a></h3>
-                    <p class="mb-0">Finding perfect t-shirt</p>
-                    <p class="text-primary font-weight-bold">$50</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-                <div class="block-4 text-center border">
-                  <figure class="block-4-image">
-                    <a href="uniform-single.php"><img src="images/cloth_2.jpg" alt="Image placeholder" class="img-fluid"></a>
-                  </figure>
-                  <div class="block-4-text p-4">
-                    <h3><a href="uniform-single.php">Polo Shirt</a></h3>
-                    <p class="mb-0">Finding perfect products</p>
-                    <p class="text-primary font-weight-bold">$50</p>
-                  </div>
-                </div>
-              </div>
+              if (mysqli_num_rows($query_run) > 0) {
+                foreach ($query_run as $uni) {
+              ?>
 
 
+                  <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
+                    <div class="block-4 text-center border">
+                      <figure class="block-4-image">
+                        <a href="uniform-single.php?uniform_id=<?php echo $uni['uniform_ID']; ?>"><?php echo '<img src="data:image;base64,' . base64_encode($uni['u_image']) . '" alt="Image placeholder" class="img-fluid">'; ?></a>
+                      </figure>
+                      <div class="block-4-text p-4">
+                        <h3><a href="uniform-single.php"><?= $uni['u_name'] ?></a></h3>
+                        <p class="mb-0"><?= $uni['u_description'] ?></p>
+
+                      </div>
+                    </div>
+                  </div>
+
+                <?php
+                }
+              } else {
+                ?>
+                <P>No Record Found</p>
+              <?php
+              }
+              ?>
             </div>
             <div class="row" data-aos="fade-up">
               <div class="col-md-12 text-center">
@@ -403,100 +291,51 @@ include('config/dbcon.php');
             <div class="border p-4 rounded mb-4">
               <h3 class="mb-3 h6 text-uppercase text-black d-block">Categories</h3>
               <ul class="list-unstyled mb-0">
-                <li class="mb-1"><a href="#" class="d-flex"><span>Men</span> <span class="text-black ml-auto">(2,220)</span></a></li>
-                <li class="mb-1"><a href="#" class="d-flex"><span>Women</span> <span class="text-black ml-auto">(2,550)</span></a></li>
-                <li class="mb-1"><a href="#" class="d-flex"><span>Children</span> <span class="text-black ml-auto">(2,124)</span></a></li>
+                <li class="mb-1"><a href="#" class="d-flex"><span>Pre school frock</span> </a></li>
+                <li class="mb-1"><a href="#" class="d-flex"><span>School frock</span> </span></a></li>
+                <li class="mb-1"><a href="#" class="d-flex"><span>Skirt</span> </a></li>
+                <li class="mb-1"><a href="#" class="d-flex"><span>Shirt</span> </a></li>
+                <li class="mb-1"><a href="#" class="d-flex"><span>Short</span> </span></a></li>
+                <li class="mb-1"><a href="#" class="d-flex"><span>Trouser</span> </a></li>
               </ul>
             </div>
 
             <div class="border p-4 rounded mb-4">
               <div class="mb-4">
-                <h3 class="mb-3 h6 text-uppercase text-black d-block">Filter by Price</h3>
+                <h3 class="mb-3 h6 text-uppercase text-black d-block">Filter by Size</h3>
                 <div id="slider-range" class="border-primary"></div>
                 <input type="text" name="text" id="amount" class="form-control border-0 pl-0 bg-white" disabled="" />
               </div>
 
               <div class="mb-4">
-                <h3 class="mb-3 h6 text-uppercase text-black d-block">Size</h3>
                 <label for="s_sm" class="d-flex">
-                  <input type="checkbox" id="s_sm" class="mr-2 mt-1"> <span class="text-black">Small (2,319)</span>
+                  <input type="checkbox" id="s_sm" class="mr-2 mt-1"> <span class="text-black">Size 2</span>
                 </label>
                 <label for="s_md" class="d-flex">
-                  <input type="checkbox" id="s_md" class="mr-2 mt-1"> <span class="text-black">Medium (1,282)</span>
+                  <input type="checkbox" id="s_md" class="mr-2 mt-1"> <span class="text-black">Size 4</span>
                 </label>
                 <label for="s_lg" class="d-flex">
-                  <input type="checkbox" id="s_lg" class="mr-2 mt-1"> <span class="text-black">Large (1,392)</span>
+                  <input type="checkbox" id="s_lg" class="mr-2 mt-1"> <span class="text-black">Size 6</span>
+                </label>
+                <label for="s_sm" class="d-flex">
+                  <input type="checkbox" id="s_sm" class="mr-2 mt-1"> <span class="text-black">Size 8</span>
+                </label>
+                <label for="s_md" class="d-flex">
+                  <input type="checkbox" id="s_md" class="mr-2 mt-1"> <span class="text-black">Size 10</span>
+                </label>
+                <label for="s_lg" class="d-flex">
+                  <input type="checkbox" id="s_lg" class="mr-2 mt-1"> <span class="text-black">Size 12</span>
                 </label>
               </div>
 
-              <div class="mb-4">
-                <h3 class="mb-3 h6 text-uppercase text-black d-block">Color</h3>
-                <a href="#" class="d-flex color-item align-items-center" >
-                  <span class="bg-danger color d-inline-block rounded-circle mr-2"></span> <span class="text-black">Red (2,429)</span>
-                </a>
-                <a href="#" class="d-flex color-item align-items-center" >
-                  <span class="bg-success color d-inline-block rounded-circle mr-2"></span> <span class="text-black">Green (2,298)</span>
-                </a>
-                <a href="#" class="d-flex color-item align-items-center" >
-                  <span class="bg-info color d-inline-block rounded-circle mr-2"></span> <span class="text-black">Blue (1,075)</span>
-                </a>
-                <a href="#" class="d-flex color-item align-items-center" >
-                  <span class="bg-primary color d-inline-block rounded-circle mr-2"></span> <span class="text-black">Purple (1,075)</span>
-                </a>
-              </div>
+
 
             </div>
           </div>
         </div>
 
-        <div class="row">
-          <div class="col-md-12">
-            <div class="site-section site-blocks-2">
-                <div class="row justify-content-center text-center mb-5">
-                  <div class="col-md-7 site-section-heading pt-4">
-                    <h2>Categories</h2>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-sm-6 col-md-6 col-lg-4 mb-4 mb-lg-0" data-aos="fade" data-aos-delay="">
-                    <a class="block-2-item" href="#">
-                      <figure class="image">
-                        <img src="images/women.jpg" alt="" class="img-fluid">
-                      </figure>
-                      <div class="text">
-                        <span class="text-uppercase">Collections</span>
-                        <h3>Women</h3>
-                      </div>
-                    </a>
-                  </div>
-                  <div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="100">
-                    <a class="block-2-item" href="#">
-                      <figure class="image">
-                        <img src="images/children.jpg" alt="" class="img-fluid">
-                      </figure>
-                      <div class="text">
-                        <span class="text-uppercase">Collections</span>
-                        <h3>Children</h3>
-                      </div>
-                    </a>
-                  </div>
-                  <div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="200">
-                    <a class="block-2-item" href="#">
-                      <figure class="image">
-                        <img src="images/men.jpg" alt="" class="img-fluid">
-                      </figure>
-                      <div class="text">
-                        <span class="text-uppercase">Collections</span>
-                        <h3>Men</h3>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-              
-            </div>
-          </div>
-        </div>
-        
+
+
       </div>
     </div>
 
@@ -519,7 +358,7 @@ include('config/dbcon.php');
                 </ul>
               </div>
             </div>
-          </div>  
+          </div>
           <div class="col-md-6 col-lg-6">
             <div class="block-5 mb-5">
               <h3 class="footer-heading mb-4">Contact Info</h3>
@@ -549,15 +388,38 @@ include('config/dbcon.php');
     </footer>
   </div>
 
-  <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/jquery-ui.js"></script>
   <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
+
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/jquery.magnific-popup.min.js"></script>
   <script src="js/aos.js"></script>
 
   <script src="js/main.js"></script>
-    
-  </body>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js'></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+
+      // Load total no.of items added in the cart and display in the navbar
+      load_cart_item_number();
+
+      function load_cart_item_number() {
+        $.ajax({
+          url: 'code.php',
+          method: 'get',
+          data: {
+            cartItem: "cart_item"
+          },
+          success: function(response) {
+            $("#cart-item").html(response);
+          }
+        });
+      }
+    });
+  </script>
+
+</body>
+
 </html>

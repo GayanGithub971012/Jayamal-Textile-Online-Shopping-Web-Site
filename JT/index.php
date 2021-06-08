@@ -13,7 +13,7 @@ include('config/dbcon.php');
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700">
   <link rel="stylesheet" href="fonts/icomoon/style.css">
-
+  <link rel="shortcut icon" href="images/logo.png">
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/magnific-popup.css">
   <link rel="stylesheet" href="css/jquery-ui.css">
@@ -52,10 +52,10 @@ include('config/dbcon.php');
               <div class="site-top-icons">
                 <ul>
                   <li>
-                    <h5>Hello
+                    <h5>
                       <?php
                       if (isset($_SESSION['auth'])) {
-                        echo $_SESSION['auth_user']['user_name'];
+                        echo "Hello " . $_SESSION['auth_user']['user_name'];
                       } else {
                         echo "Not Logged in";
                       }
@@ -72,6 +72,8 @@ include('config/dbcon.php');
                         <form action="code.php" method="POST">
                           <button type="submit" name="login_btn" class="dropdown-item">Login</button>
                           <button type="submit" name="signup_btn" class="dropdown-item">Sign Up</button>
+                          <button type="submit" name="logout_btn" class="dropdown-item">Logout</button>
+                          <button type="submit" name="user_btn" class="dropdown-item">User Profile</button>
                           <button type="submit" name="adminlogin_btn" class="dropdown-item">Admin Panel</button>
                         </form>
                       </div>
@@ -82,9 +84,9 @@ include('config/dbcon.php');
                   </li>
                   <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
                   <li>
-                    <a href="cart.php" class="site-cart ">
+                    <a class="site-cart" href="cart.php">
                       <span class="icon icon-shopping_cart"></span>
-                      <span class="count bg-warning text-secondary">0</span>
+                      <span id="cart-item" class="count bg-warning text-secondary"></span>
                     </a>
                   </li>
                   <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
@@ -214,33 +216,69 @@ include('config/dbcon.php');
           <div class="col-sm-12 col-md-12 col-lg-4 mb-4 mb-lg-0" data-aos="fade" data-aos-delay="">
             <a class="block-2-item">
               <figure class="image">
-                <img src="images/women.jpg" alt="" class="img-fluid">
+                <img src="images/home_image/pre_school_frock.png" alt="" class="img-fluid" style="width: 400px;height:500px;">
               </figure>
               <div class="text">
                 <span class="text-uppercase">Collections</span>
-                <h3>Women</h3>
+                <h3>Pre school frock</h3>
               </div>
             </a>
           </div>
-          <div class="col-sm-12 col-md-12 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="100">
+          <div class="col-sm-12 col-md-12 col-lg-4 mb-4 mb-lg-0" data-aos="fade" data-aos-delay="">
             <a class="block-2-item">
               <figure class="image">
-                <img src="images/children.jpg" alt="" class="img-fluid">
+                <img src="images/home_image/school_frock.png" alt="" class="img-fluid" style="width: 400px;height:500px;">
               </figure>
               <div class="text">
                 <span class="text-uppercase">Collections</span>
-                <h3>Children</h3>
+                <h3>School frock</h3>
               </div>
             </a>
           </div>
-          <div class="col-sm-12 col-md-12 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="200">
+          <div class="col-sm-12 col-md-12 col-lg-4 mb-4 mb-lg-0" data-aos="fade" data-aos-delay="">
             <a class="block-2-item">
               <figure class="image">
-                <img src="images/men.jpg" alt="" class="img-fluid">
+                <img src="images/home_image/skirt.png" alt="" class="img-fluid" style="width: 400px;height:500px;">
               </figure>
               <div class="text">
                 <span class="text-uppercase">Collections</span>
-                <h3>Men</h3>
+                <h3>Skirt</h3>
+              </div>
+            </a>
+          </div>
+        </div>
+        <br><br>
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-4 mb-4 mb-lg-0" data-aos="fade" data-aos-delay="">
+            <a class="block-2-item">
+              <figure class="image">
+                <img src="images/home_image/shirt.png" alt="" class="img-fluid" style="width: 400px;height:500px;">
+              </figure>
+              <div class="text">
+                <span class="text-uppercase">Collections</span>
+                <h3>Shirt</h3>
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-12 col-md-12 col-lg-4 mb-4 mb-lg-0" data-aos="fade" data-aos-delay="">
+            <a class="block-2-item">
+              <figure class="image">
+                <img src="images/home_image/short.png" alt="" class="img-fluid" style="width: 400px;height:500px;">
+              </figure>
+              <div class="text">
+                <span class="text-uppercase">Collections</span>
+                <h3>Short</h3>
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-12 col-md-12 col-lg-4 mb-4 mb-lg-0" data-aos="fade" data-aos-delay="">
+            <a class="block-2-item">
+              <figure class="image">
+                <img src="images/home_image/truoser.png" alt="" class="img-fluid" style="width: 400px;height:500px;">
+              </figure>
+              <div class="text">
+                <span class="text-uppercase">Collections</span>
+                <h3>Trouser</h3>
               </div>
             </a>
           </div>
@@ -252,16 +290,15 @@ include('config/dbcon.php');
       <div class="container">
         <div class="row justify-content-center  mb-5">
           <div class="col-md-7 site-section-heading text-center pt-4">
-            <h2>Customized Your Uniform!</h2>
+            <h1>Customize Your Uniform!</h1>
           </div>
         </div>
         <div class="row align-items-center">
           <div class="col-md-12 col-lg-7 mb-5">
-            <img src="images/blog_1.jpg" alt="Image placeholder" class="img-fluid rounded">
+            <img src="images/customize.png" alt="Image placeholder" class="img-fluid rounded" style="width: 600px;">
           </div>
           <div class="col-md-12 col-lg-5 text-center pl-md-5">
-            <h2><a href="#">50% less in all items</a></h2>
-            <p class="post-meta mb-4">By <a href="#">Carl Smith</a> <span class="block-8-sep">&bullet;</span> September 3, 2018</p>
+            <h2><a href="#">Now you can customize your uniform for a perfect fit</a></h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam iste dolor accusantium facere corporis ipsum animi deleniti fugiat. Ex, veniam?</p>
             <p><a href="customizeduniform.php" class="btn btn-warning btn-sm">Customized Your Uniform</a></p>
           </div>
@@ -318,15 +355,40 @@ include('config/dbcon.php');
     </footer>
   </div>
 
-  <script src="js/jquery-3.3.1.min.js"></script>
+
   <script src="js/jquery-ui.js"></script>
   <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
+
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/jquery.magnific-popup.min.js"></script>
   <script src="js/aos.js"></script>
 
   <script src="js/main.js"></script>
+
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js'></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+
+      // Load total no.of items added in the cart and display in the navbar
+      load_cart_item_number();
+
+      function load_cart_item_number() {
+        $.ajax({
+          url: 'code.php',
+          method: 'get',
+          data: {
+            cartItem: "cart_item"
+          },
+          success: function(response) {
+            $("#cart-item").html(response);
+          }
+        });
+      }
+    });
+  </script>
 
 </body>
 

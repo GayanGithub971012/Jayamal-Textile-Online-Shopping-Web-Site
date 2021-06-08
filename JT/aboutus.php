@@ -4,28 +4,30 @@ include('config/dbcon.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Jayamal Textiles Web Page</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700"> 
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
+<head>
+  <title>Jayamal Textiles Web Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="css/jquery-ui.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/style-starter.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700">
+  <link rel="stylesheet" href="fonts/icomoon/style.css">
+  <link rel="shortcut icon" href="images/logo.png">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/magnific-popup.css">
+  <link rel="stylesheet" href="css/jquery-ui.css">
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="css/style-starter.css">
 
-    <link rel="stylesheet" href="css/aos.css">
+  <link rel="stylesheet" href="css/aos.css">
 
-    <link rel="stylesheet" href="css/style.css">
-    
-  </head>
-  <body>
-  
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
   <div class="site-wrap">
     <header class="site-navbar" role="banner">
       <div class="site-navbar-top">
@@ -69,6 +71,8 @@ include('config/dbcon.php');
                         <form action="code.php" method="POST">
                           <button type="submit" name="login_btn" class="dropdown-item">Login</button>
                           <button type="submit" name="signup_btn" class="dropdown-item">Sign Up</button>
+                          <button type="submit" name="logout_btn" class="dropdown-item">Logout</button>
+                          <button type="submit" name="user_btn" class="dropdown-item">User Profile</button>
                           <button type="submit" name="adminlogin_btn" class="dropdown-item">Admin Panel</button>
                         </form>
                       </div>
@@ -79,9 +83,9 @@ include('config/dbcon.php');
                   </li>
                   <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
                   <li>
-                    <a href="cart.php" class="site-cart ">
+                    <a class="site-cart" href="cart.php">
                       <span class="icon icon-shopping_cart"></span>
-                      <span class="count bg-warning text-secondary">0</span>
+                      <span id="cart-item" class="count bg-warning text-secondary"></span>
                     </a>
                   </li>
                   <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
@@ -195,7 +199,7 @@ include('config/dbcon.php');
           <div class="col-md-12 mb-0"><a href="index.php">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">About Us</strong></div>
         </div>
       </div>
-    </div>  
+    </div>
 
     <div class="site-section border-bottom" data-aos="fade">
       <div class="container">
@@ -209,14 +213,14 @@ include('config/dbcon.php');
           </div>
           <div class="col-md-1"></div>
           <div class="col-md-5">
-            
-            
+
+
             <div class="site-section-heading pt-3 mb-4">
               <h2 class="text-black">How We Started</h2>
             </div>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius repellat, dicta at laboriosam, nemo exercitationem itaque eveniet architecto cumque, deleniti commodi molestias repellendus quos sequi hic fugiat asperiores illum. Atque, in, fuga excepturi corrupti error corporis aliquam unde nostrum quas.</p>
             <p>Accusantium dolor ratione maiores est deleniti nihil? Dignissimos est, sunt nulla illum autem in, quibusdam cumque recusandae, laudantium minima repellendus.</p>
-            
+
           </div>
         </div>
       </div>
@@ -231,7 +235,7 @@ include('config/dbcon.php');
         </div>
         <div class="row">
           <div class="col-md-6 col-lg-3">
-  
+
             <div class="block-38 text-center">
               <div class="block-38-img">
                 <div class="block-38-header">
@@ -290,7 +294,7 @@ include('config/dbcon.php');
         </div>
       </div>
     </div>
-  
+
 
     <div class="site-section site-section-sm site-blocks-1 border-0" data-aos="fade">
       <div class="container">
@@ -326,7 +330,7 @@ include('config/dbcon.php');
       </div>
     </div>
 
-    
+
     <footer class="site-footer border-top bg-warning">
       <div class="container">
         <div class="row">
@@ -346,7 +350,7 @@ include('config/dbcon.php');
                 </ul>
               </div>
             </div>
-          </div>  
+          </div>
           <div class="col-md-6 col-lg-6">
             <div class="block-5 mb-5">
               <h3 class="footer-heading mb-4">Contact Info</h3>
@@ -376,15 +380,38 @@ include('config/dbcon.php');
     </footer>
   </div>
 
-  <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/jquery-ui.js"></script>
   <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
+
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/jquery.magnific-popup.min.js"></script>
   <script src="js/aos.js"></script>
 
   <script src="js/main.js"></script>
-    
-  </body>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js'></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+
+      // Load total no.of items added in the cart and display in the navbar
+      load_cart_item_number();
+
+      function load_cart_item_number() {
+        $.ajax({
+          url: 'code.php',
+          method: 'get',
+          data: {
+            cartItem: "cart_item"
+          },
+          success: function(response) {
+            $("#cart-item").html(response);
+          }
+        });
+      }
+    });
+  </script>
+
+</body>
+
 </html>

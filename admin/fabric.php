@@ -40,17 +40,15 @@ include('includes/sidebar.php');
                                     $query = "SELECT * FROM fabrics";
                                     $query_run = mysqli_query($con, $query);
 
-                                    if(mysqli_num_rows($query_run) > 0 )
-                                    {
-                                        foreach($query_run as $fab)
-                                        {
-                                            ?>
+                                    if (mysqli_num_rows($query_run) > 0) {
+                                        foreach ($query_run as $fab) {
+                                    ?>
                                             <tr>
-                                                <td><?= $fab['fabric_type']?></td>
-                                                <td><?= $fab['fabric_info']?></td>
-                                                <td><?= $fab['extra_cost']?></td>
+                                                <td><?= $fab['fabric_type'] ?></td>
+                                                <td><?= $fab['fabric_info'] ?></td>
+                                                <td><?= $fab['extra_cost'] ?></td>
                                                 <td>
-                                                    <a href="product-edit.php?prod_id=<?php echo $prod_item['id']; ?>"class="btn btn-success">Edit</a>
+                                                    <a href="product-edit.php?prod_id=<?php echo $prod_item['id']; ?>" class="btn btn-success">Edit</a>
                                                 </td>
                                                 <td>
                                                     <form action="code.php" method="POST">
@@ -59,22 +57,20 @@ include('includes/sidebar.php');
                                                     </form>
                                                 </td>
                                             </tr>
-                                            <?php
+                                        <?php
                                         }
-                                    }
-                                    else
-                                    {
+                                    } else {
                                         ?>
                                         <tr>
                                             <td colspan="5">No Record Found</td>
                                         </tr>
-                                        <?php
+                                    <?php
                                     }
                                     ?>
-                                    
+
                                 </tbody>
                             </table>
-                        
+
                         </div>
                     </div>
                 </div>

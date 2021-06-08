@@ -4,28 +4,30 @@ include('config/dbcon.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Jayamal Textiles Web Page</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700"> 
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
+<head>
+  <title>Jayamal Textiles Web Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="css/jquery-ui.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/style-starter.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700">
+  <link rel="stylesheet" href="fonts/icomoon/style.css">
+  <link rel="shortcut icon" href="images/logo.png">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/magnific-popup.css">
+  <link rel="stylesheet" href="css/jquery-ui.css">
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="css/style-starter.css">
 
-    <link rel="stylesheet" href="css/aos.css">
+  <link rel="stylesheet" href="css/aos.css">
 
-    <link rel="stylesheet" href="css/style.css">
-    
-  </head>
-  <body>
-  
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
   <div class="site-wrap">
     <header class="site-navbar" role="banner">
       <div class="site-navbar-top">
@@ -69,6 +71,8 @@ include('config/dbcon.php');
                         <form action="code.php" method="POST">
                           <button type="submit" name="login_btn" class="dropdown-item">Login</button>
                           <button type="submit" name="signup_btn" class="dropdown-item">Sign Up</button>
+                          <button type="submit" name="logout_btn" class="dropdown-item">Logout</button>
+                          <button type="submit" name="user_btn" class="dropdown-item">User Profile</button>
                           <button type="submit" name="adminlogin_btn" class="dropdown-item">Admin Panel</button>
                         </form>
                       </div>
@@ -79,9 +83,9 @@ include('config/dbcon.php');
                   </li>
                   <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
                   <li>
-                    <a href="cart.php" class="site-cart ">
+                    <a class="site-cart" href="cart.php">
                       <span class="icon icon-shopping_cart"></span>
-                      <span class="count bg-warning text-secondary">0</span>
+                      <span id="cart-item" class="count bg-warning text-secondary"></span>
                     </a>
                   </li>
                   <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
@@ -195,127 +199,73 @@ include('config/dbcon.php');
           <div class="col-md-12 mb-0"><a href="index.html">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Tank Top T-Shirt</strong></div>
         </div>
       </div>
-    </div>  
+    </div>
 
     <div class="site-section">
       <div class="container">
         <div class="row">
-          <div class="col-md-6">
-            <img src="images/cloth_1.jpg" alt="Image" class="img-fluid">
-          </div>
-          <div class="col-md-6">
-            <h2 class="text-black">Tank Top T-Shirt</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, vitae, explicabo? Incidunt facere, natus soluta dolores iusto! Molestiae expedita veritatis nesciunt doloremque sint asperiores fuga voluptas, distinctio, aperiam, ratione dolore.</p>
-            <p class="mb-4">Ex numquam veritatis debitis minima quo error quam eos dolorum quidem perferendis. Quos repellat dignissimos minus, eveniet nam voluptatibus molestias omnis reiciendis perspiciatis illum hic magni iste, velit aperiam quis.</p>
-            <p><strong class="text-primary h4">$50.00</strong></p>
-            <div class="mb-1 d-flex">
-              <label for="option-sm" class="d-flex mr-3 mb-3">
-                <span class="d-inline-block mr-2" style="top:-2px; position: relative;"><input type="radio" id="option-sm" name="shop-sizes"></span> <span class="d-inline-block text-black">Small</span>
-              </label>
-              <label for="option-md" class="d-flex mr-3 mb-3">
-                <span class="d-inline-block mr-2" style="top:-2px; position: relative;"><input type="radio" id="option-md" name="shop-sizes"></span> <span class="d-inline-block text-black">Medium</span>
-              </label>
-              <label for="option-lg" class="d-flex mr-3 mb-3">
-                <span class="d-inline-block mr-2" style="top:-2px; position: relative;"><input type="radio" id="option-lg" name="shop-sizes"></span> <span class="d-inline-block text-black">Large</span>
-              </label>
-              <label for="option-xl" class="d-flex mr-3 mb-3">
-                <span class="d-inline-block mr-2" style="top:-2px; position: relative;"><input type="radio" id="option-xl" name="shop-sizes"></span> <span class="d-inline-block text-black"> Extra Large</span>
-              </label>
-            </div>
-            <div class="mb-5">
-              <div class="input-group mb-3" style="max-width: 120px;">
-              <div class="input-group-prepend">
-                <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
-              </div>
-              <input type="text" class="form-control text-center" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-              <div class="input-group-append">
-                <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
-              </div>
-            </div>
+          <?php
 
-            </div>
-            <p><a href="cart.html" class="buy-now btn btn-sm btn-dark">Add To Cart</a></p>
+          if (isset($_GET['uniform_id'])) {
+            $uniform_id = $_GET['uniform_id'];
+            $query = "SELECT * FROM uniform WHERE uniform_ID ='$uniform_id' LIMIT 1";
+            $query_run = mysqli_query($con, $query);
 
-          </div>
+            if (mysqli_num_rows($query_run) > 0) {
+              foreach ($query_run as $row) {
+          ?>
+
+                <div class="col-md-6">
+                  <?php echo '<img src="data:image;base64,' . base64_encode($row['u_image']) . '" alt="Image placeholder" class="img-fluid">'; ?>
+                </div>
+                <div class="col-md-6">
+                  <h2 class="text-black"><?php echo $row['u_name'] ?></h2>
+                  <p><?php echo $row['u_description'] ?></p>
+                  <form action="" class="form-submit">
+
+                    <div class="form-group row">
+                      <div class="col-md-3 ">
+                        <select class="form-control u_size" id="exampleFormControlSelect1">
+                          <option>size2</option>
+                          <option>size4</option>
+                          <option>size6</option>
+                          <option>size8</option>
+                          <option>size10</option>
+                          <option>size12</option>
+                        </select>
+                      </div>
+                      <a href="sizechart.php" class="col-md-3 btn btn-dark btn-block">Size Chart</a>
+                    </div>
+
+                    <div class="mb-5">
+                      <div class="input-group mb-3" style="max-width: 120px;">
+                        <div class="input-group-prepend">
+                          <button class="btn btn-outline-dark js-btn-minus" type="button">&minus;</button>
+                        </div>
+                        <input type="text" class="form-control text-center u_qty" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                        <div class="input-group-append">
+                          <button class="btn btn-outline-dark js-btn-plus" type="button">&plus;</button>
+                        </div>
+                      </div>
+                    </div>
+                    <input type="hidden" class="u_id" value="<?= $row['uniform_ID'] ?>">
+                    <button class="btn btn-dark btn-block addItemBtn"><i class="icon icon-cart-plus"></i>&nbsp;&nbsp;Add to cart</button>
+                  </form>
+                </div>
+
+          <?php
+              }
+            } else {
+              echo "<h4>No Record Found.!</h4>";
+            }
+          }
+
+          ?>
         </div>
       </div>
     </div>
 
-    <div class="site-section block-3 site-blocks-2 bg-light">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-md-7 site-section-heading text-center pt-4">
-            <h2>Featured Products</h2>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="nonloop-block-3 owl-carousel">
-              <div class="item">
-                <div class="block-4 text-center">
-                  <figure class="block-4-image">
-                    <img src="images/cloth_1.jpg" alt="Image placeholder" class="img-fluid">
-                  </figure>
-                  <div class="block-4-text p-4">
-                    <h3><a href="#">Tank Top</a></h3>
-                    <p class="mb-0">Finding perfect t-shirt</p>
-                    <p class="text-primary font-weight-bold">$50</p>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="block-4 text-center">
-                  <figure class="block-4-image">
-                    <img src="images/shoe_1.jpg" alt="Image placeholder" class="img-fluid">
-                  </figure>
-                  <div class="block-4-text p-4">
-                    <h3><a href="#">Corater</a></h3>
-                    <p class="mb-0">Finding perfect products</p>
-                    <p class="text-primary font-weight-bold">$50</p>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="block-4 text-center">
-                  <figure class="block-4-image">
-                    <img src="images/cloth_2.jpg" alt="Image placeholder" class="img-fluid">
-                  </figure>
-                  <div class="block-4-text p-4">
-                    <h3><a href="#">Polo Shirt</a></h3>
-                    <p class="mb-0">Finding perfect products</p>
-                    <p class="text-primary font-weight-bold">$50</p>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="block-4 text-center">
-                  <figure class="block-4-image">
-                    <img src="images/cloth_3.jpg" alt="Image placeholder" class="img-fluid">
-                  </figure>
-                  <div class="block-4-text p-4">
-                    <h3><a href="#">T-Shirt Mockup</a></h3>
-                    <p class="mb-0">Finding perfect products</p>
-                    <p class="text-primary font-weight-bold">$50</p>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="block-4 text-center">
-                  <figure class="block-4-image">
-                    <img src="images/shoe_1.jpg" alt="Image placeholder" class="img-fluid">
-                  </figure>
-                  <div class="block-4-text p-4">
-                    <h3><a href="#">Corater</a></h3>
-                    <p class="mb-0">Finding perfect products</p>
-                    <p class="text-primary font-weight-bold">$50</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+
 
     <footer class="site-footer border-top bg-warning">
       <div class="container">
@@ -336,7 +286,7 @@ include('config/dbcon.php');
                 </ul>
               </div>
             </div>
-          </div>  
+          </div>
           <div class="col-md-6 col-lg-6">
             <div class="block-5 mb-5">
               <h3 class="footer-heading mb-4">Contact Info</h3>
@@ -373,8 +323,53 @@ include('config/dbcon.php');
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/jquery.magnific-popup.min.js"></script>
   <script src="js/aos.js"></script>
-
   <script src="js/main.js"></script>
-    
-  </body>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+
+      // Send product details in the server
+      $(".addItemBtn").click(function(e) {
+        e.preventDefault();
+        var $form = $(this).closest(".form-submit");
+        var u_id = $form.find(".u_id").val();
+        var u_size = $form.find(".u_size").val()
+        var u_qty = $form.find(".u_qty").val();
+
+        $.ajax({
+          url: 'code.php',
+          method: 'post',
+          data: {
+            u_id: u_id,
+            u_size: u_size,
+            u_qty: u_qty
+          },
+          success: function(response) {
+            $("#message").html(response);
+            window.scrollTo(0, 0);
+            load_cart_item_number();
+          }
+        });
+      });
+
+      // Load total no.of items added in the cart and display in the navbar
+      load_cart_item_number();
+
+      function load_cart_item_number() {
+        $.ajax({
+          url: 'code.php',
+          method: 'get',
+          data: {
+            cartItem: "cart_item"
+          },
+          success: function(response) {
+            $("#cart-item").html(response);
+          }
+        });
+      }
+    });
+  </script>
+
+</body>
+
 </html>

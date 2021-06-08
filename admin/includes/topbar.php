@@ -11,36 +11,32 @@
     <li class="nav-item d-none d-sm-inline-block">
       <a href="#" class="nav-link">Contact</a>
     </li>
-    <!-- Navbar Search --> 
-      <form class="form-inline ml-auto">
-        <div class="input-group input-group-sm">
-          <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-navbar" type="submit">
-              <i class="fas fa-search"></i>
-            </button>
-          </div>
+    <!-- Navbar Search -->
+    <form class="form-inline ml-auto">
+      <div class="input-group input-group-sm">
+        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+        <div class="input-group-append">
+          <button class="btn btn-navbar" type="submit">
+            <i class="fas fa-search"></i>
+          </button>
         </div>
-      </form>
+      </div>
+    </form>
   </ul>
-   
-  
-     
+
+
+
   <!-- Right navbar links -->
   <ul class="navbar-nav ml-auto">
     <li class="nav-item">
-       <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-          aria-expanded="false">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
           <?php
-            if(isset($_SESSION['auth']))
-            {
-                echo $_SESSION['auth_user']['user_name'];
-            }
-            else
-            {
-                echo "Not Logged in";
-            }
+          if (isset($_SESSION['auth'])) {
+            echo $_SESSION['auth_user']['user_name'];
+          } else {
+            echo "Not Logged in";
+          }
           ?>
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">

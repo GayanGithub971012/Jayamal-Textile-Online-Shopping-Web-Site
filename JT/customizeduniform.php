@@ -19,7 +19,7 @@ include('config/dbcon.php');
   <link rel="stylesheet" href="css/owl.carousel.min.css">
   <link rel="stylesheet" href="css/owl.theme.default.min.css">
   <link rel="stylesheet" href="css/style-starter.css">
-
+  <link rel="shortcut icon" href="images/logo.png">
   <link rel="stylesheet" href="css/aos.css">
 
   <link rel="stylesheet" href="css/style.css">
@@ -71,6 +71,8 @@ include('config/dbcon.php');
                         <form action="code.php" method="POST">
                           <button type="submit" name="login_btn" class="dropdown-item">Login</button>
                           <button type="submit" name="signup_btn" class="dropdown-item">Sign Up</button>
+                          <button type="submit" name="logout_btn" class="dropdown-item">Logout</button>
+                          <button type="submit" name="user_btn" class="dropdown-item">User Profile</button>
                           <button type="submit" name="adminlogin_btn" class="dropdown-item">Admin Panel</button>
                         </form>
                       </div>
@@ -81,9 +83,9 @@ include('config/dbcon.php');
                   </li>
                   <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
                   <li>
-                    <a href="cart.php" class="site-cart ">
+                    <a class="site-cart" href="cart.php">
                       <span class="icon icon-shopping_cart"></span>
-                      <span class="count bg-warning text-secondary">0</span>
+                      <span id="cart-item" class="count bg-warning text-secondary"></span>
                     </a>
                   </li>
                   <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
@@ -201,63 +203,124 @@ include('config/dbcon.php');
 
     <div class="site-section">
       <div class="container">
+
         <div class="row">
           <div class="col-md-12">
-            <h2 class="h3 mb-3 text-black">Get In Touch</h2>
+            <h2 class="h3 mb-3 text-black">Customized Uniform</h2>
           </div>
+        </div>
+
+        <div class="row">
           <div class="col-md-12">
             <form action="#" method="post">
               <div class="p-3 p-lg-5 border">
-                <div class="form-group row">
+                <div class="row">
                   <div class="col-md-6">
-                    <label for="c_fname" class="text-black">First Name <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="c_fname" name="c_fname">
+                    <div class="form-group row">
+                      <div class="col-md-12">
+                        <label for="c_fname" class="text-black">Unifrom Category<span class="text-danger">*</span></label>
+                        <select class="form-control" name="uni_category" id="exampleFormControlSelect1">
+                          <option>Pre school frock</option>
+                          <option>School frock</option>
+                          <option>Skirt</option>
+                          <option>Shirt</option>
+                          <option>Short</option>
+                          <option>Trouser</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <div class="col-md-12">
+                        <label for="uni_institition" class="text-black">Institution<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="uni_institition" name="uni_institition" placeholder="Enter your institution">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <div class="col-md-12">
+                        <label for="uni_color" class="text-black">Color<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="uni_color" name="uni_color" placeholder="Color of uniform">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <div class="col-md-12">
+                        <label for="exampleFormControlSelect1" class="text-black">Fabric Type<span class="text-danger">*</span></label>
+                        <select class="form-control" name="uni_" id="exampleFormControlSelect1">
+                          <option>1</option>
+                          <option>2</option>
+                          <option>3</option>
+                          <option>4</option>
+                          <option>5</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <div class="col-md-12">
+                        <label for="exampleFormControlSelect1" class="text-black">Size<span class="text-danger">*</span></label>
+                        <select class="form-control" name="uni_" id="exampleFormControlSelect1">
+                          <option>1</option>
+                          <option>2</option>
+                          <option>3</option>
+                          <option>4</option>
+                          <option>5</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <div class="col-md-12">
+                        <label for="c_subject" class="text-black">Quantity</label>
+                        <input type="text" class="form-control" id="c_subject" name="c_subject">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="c_subject" class="text-black">Add Image</label>
+                      <input type="file" name="u_image" class="form-control btn-sm">
+                    </div>
                   </div>
                   <div class="col-md-6">
-                    <label for="c_lname" class="text-black">Last Name <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="c_lname" name="c_lname">
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <div class="col-md-12">
-                    <label for="c_email" class="text-black">Email <span class="text-danger">*</span></label>
-                    <input type="email" class="form-control" id="c_email" name="c_email" placeholder="">
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <div class="col-md-12">
-                    <label for="exampleFormControlSelect1" class="text-black">Example select<span class="text-danger">*</span></label>
-                    <select class="form-control" id="exampleFormControlSelect1">
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <div class="col-md-12">
-                    <label for="c_subject" class="text-black">Subject </label>
-                    <input type="text" class="form-control" id="c_subject" name="c_subject">
+                    <div class="form-group row">
+                      <div class="col-md-12">
+                        <label for="c_subject" class="text-black">Measurement 01</label>
+                        <input type="text" class="form-control" id="c_subject" name="c_subject">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <div class="col-md-12">
+                        <label for="c_subject" class="text-black">Measurement 02</label>
+                        <input type="text" class="form-control" id="c_subject" name="c_subject">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <div class="col-md-12">
+                        <label for="c_subject" class="text-black">Measurement 03</label>
+                        <input type="text" class="form-control" id="c_subject" name="c_subject">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <div class="col-md-12">
+                        <label for="c_subject" class="text-black">Measurement 04</label>
+                        <input type="text" class="form-control" id="c_subject" name="c_subject">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <div class="col-md-12">
+                        <label for="c_message" class="text-black">Extra Note</label>
+                        <textarea name="c_message" id="c_message" cols="30" rows="7" class="form-control"></textarea>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <div class="col-lg-12">
+                        <button class="btn btn-dark btn-lg btn-block"><i class="icon icon-cart-plus"></i>&nbsp;&nbsp;Add to cart</button>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                <div class="form-group row">
-                  <div class="col-md-12">
-                    <label for="c_message" class="text-black">Message </label>
-                    <textarea name="c_message" id="c_message" cols="30" rows="7" class="form-control"></textarea>
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <div class="col-lg-12">
-                    <input type="submit" class="btn btn-dark btn-lg btn-block" value="Send Message">
-                  </div>
-                </div>
               </div>
             </form>
           </div>
         </div>
+
+
       </div>
     </div>
 
@@ -311,15 +374,37 @@ include('config/dbcon.php');
     </footer>
   </div>
 
-  <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/jquery-ui.js"></script>
   <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
+
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/jquery.magnific-popup.min.js"></script>
   <script src="js/aos.js"></script>
 
   <script src="js/main.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js'></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+
+      // Load total no.of items added in the cart and display in the navbar
+      load_cart_item_number();
+
+      function load_cart_item_number() {
+        $.ajax({
+          url: 'code.php',
+          method: 'get',
+          data: {
+            cartItem: "cart_item"
+          },
+          success: function(response) {
+            $("#cart-item").html(response);
+          }
+        });
+      }
+    });
+  </script>
 
 </body>
 
