@@ -202,9 +202,13 @@ include('config/dbcon.php');
         </div>
       </div>
     </div>
-
+    
+    
     <div class="site-section">
       <div class="container">
+        <?php
+          include('../admin/message.php');
+        ?>
         <div class="row mb-5">
           <form class="col-md-12 form-submit" method="post">
             <div class="site-blocks-table">

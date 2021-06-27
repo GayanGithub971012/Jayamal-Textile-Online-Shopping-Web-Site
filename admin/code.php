@@ -261,9 +261,10 @@ if(isset($_POST['addCategory']))
     $size8price = $_POST['size8price'];
     $size10price = $_POST['size10price'];
     $size12price = $_POST['size12price'];
+    $avg_price = ($size2price + $size4price + $size6price + $size8price + $size10price + $size12price)/6;
     
     
-    $cate_query = "INSERT INTO categoryprice (c_name, size2_price, size4_price, size6_price, size8_price, size10_price, size12_price) VALUES ('$categoryname','$size2price','$size4price','$size6price','$size8price','$size10price','$size12price')";
+    $cate_query = "INSERT INTO categoryprice (c_name, size2_price, size4_price, size6_price, size8_price, size10_price, size12_price, avg_price) VALUES ('$categoryname','$size2price','$size4price','$size6price','$size8price','$size10price','$size12price','$avg_price')";
     $cate_query_run = mysqli_query($con, $cate_query);
 
     if($cate_query_run)
@@ -290,8 +291,9 @@ if(isset($_POST['editCategory']))
     $size8_price = $_POST['size8_price'];
     $size10_price = $_POST['size10_price'];
     $size12_price = $_POST['size12_price'];
+    $avg_price = ($size2_price + $size4_price + $size6_price + $size8_price + $size10_price + $size12_price)/6;
 
-    $query = "UPDATE categoryprice SET c_name='$c_name', size2_price='$size2_price', size4_price='$size4_price', size6_price='$size6_price', size8_price='$size8_price', size10_price='$size10_price', size12_price='$size12_price' WHERE c_name='$c_name' ";
+    $query = "UPDATE categoryprice SET c_name='$c_name', size2_price='$size2_price', size4_price='$size4_price', size6_price='$size6_price', size8_price='$size8_price', size10_price='$size10_price', size12_price='$size12_price', avg_price='$avg_price' WHERE c_name='$c_name' ";
     $query_run = mysqli_query($con, $query);
 
     if($query_run)
@@ -445,3 +447,72 @@ if(isset($_POST['deleteOrder']))
     }
 
 }
+//Fabric table add data from admin panel
+if(isset($_POST['addFabric']))
+{
+    $f_type = $_POST['f_type'];
+    $f_information = $_POST['f_information'];
+    $f_extra_cost = $_POST['f_extra_cost'];
+    
+    
+    
+    $uni_query = "INSERT INTO fabric (fabric_Type,fabric_Info,extra_cost) VALUES ('$f_type','$f_information','$f_extra_cost')";
+    $uni_query_run = mysqli_query($con, $uni_query);
+
+    if($uni_query_run)
+    {
+        $_SESSION['status'] = "Fabric Added Successfully";
+        header("Location: fabrics.php");
+    }
+    else
+    {
+        $_SESSION['status'] = "Fabric Add Failed";
+        header("Location: fabrics.php");
+    }
+      
+
+}
+//Fabric table edit data from admin panel
+if(isset($_POST['editFabric']))
+{
+    $f_type = $_POST['f_type'];
+    $f_information = $_POST['f_information'];
+    $extra_cost = $_POST['f_extra_cost'];
+
+    $query = "UPDATE fabric SET fabric_Type='$f_type',fabric_Info='$f_information',extra_cost='$extra_cost' WHERE fabric_Type='$f_type' ";
+    $query_run = mysqli_query($con, $query);
+
+    if($query_run)
+    {
+        $_SESSION['status'] = "Fabric Status Updated Successfully";
+        header("Location: fabrics.php");
+    }
+    else
+    {
+        $_SESSION['status'] = "FabricStatus Updating Failed";
+        header("Location: fabrics.php");
+    }
+
+}
+
+//Fabrics table delete data from admin panel
+if(isset($_POST['deletefabric']))
+{
+    $fabric_type = $_POST['fabric_type'];
+   
+    $query = "DELETE FROM fabric WHERE fabric_Type='$fabric_type' ";
+    $query_run = mysqli_query($con, $query);
+
+    if($query_run)
+    {
+        $_SESSION['status'] = "Fabric Deleted Successfully";
+        header("Location: fabrics.php");
+    }
+    else
+    {
+        $_SESSION['status'] = "Fabric Deleting Failed";
+        header("Location: fabrics.php");
+    }
+
+}
+?>

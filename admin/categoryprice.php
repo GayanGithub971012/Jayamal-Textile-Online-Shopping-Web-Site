@@ -109,6 +109,7 @@ include('includes/sidebar.php');
                     <th>Size8 Price</th>
                     <th>Size10 Price</th>
                     <th>Size12 Price</th>
+                    <th>Average Price</th>
                     <th>Edit</th>
                     <th>Delete</th>
                   </tr>
@@ -131,6 +132,7 @@ include('includes/sidebar.php');
                         <td><?= $cate['size8_price'] ?></td>
                         <td><?= $cate['size10_price'] ?></td>
                         <td><?= $cate['size12_price'] ?></td>
+                        <td><?= $cate['avg_price'] ?></td>
                         <td>
                           <a href="categoryprice-edit.php?category_name=<?php echo $cate['c_name']; ?>" class="btn btn-success">Edit</a>
                         </td>

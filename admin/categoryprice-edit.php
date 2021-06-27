@@ -52,7 +52,7 @@ include('config/dbcon.php');
                         if (mysqli_num_rows($query_run) > 0) {
                           foreach ($query_run as $row) {
                       ?>
-                            <input type="hidden" name="user_id" value="<?php echo $row['c_name'] ?>">
+                            <input type="hidden" name="c_name" value="<?php echo $row['c_name'] ?>">
                             <div class="form-group">
                               <lable for="">Category Name</lable>
                               <input type="text" name="c_name" value="<?php echo $row['c_name'] ?>" class="form-control" placeholder="Name">
@@ -80,6 +80,10 @@ include('config/dbcon.php');
                             <div class="form-group">
                               <lable for="">Size12 Price</lable>
                               <input type="text" name="size12_price" value="<?php echo $row['size12_price'] ?>" class="form-control" placeholder="Phone Number">
+                            </div>
+                            <div class="form-group">
+                              <lable for="">Average Price</lable>
+                              <input type="text" name="avg_price" value="<?php echo $row['avg_price'] ?>" class="form-control" placeholder="Phone Number" readonly>
                             </div>
                       <?php
                           }

@@ -50,7 +50,7 @@ include('includes/sidebar.php');
                                                 <td><?= $order['uniform_ID'] ?></td>
                                                 <td><?= $order['selected_size'] ?></td>
                                                 <td><?= $order['quantity'] ?></td>
-                                                <td><?= $order['subTotal'] ?></td>
+                                                <td><?= $order['total_price'] ?></td>
                                                 <td>
                                                     <a href="product-edit.php?prod_id=<?php echo $prod_item['id']; ?>" class="btn btn-success">Edit</a>
                                                 </td>

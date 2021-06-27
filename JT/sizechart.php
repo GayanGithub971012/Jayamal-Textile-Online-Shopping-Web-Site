@@ -628,7 +628,7 @@ include('config/dbcon.php');
             </table>
           </div>
         </div>
-        <div class="col-6">
+        <div class="col-md-6">
           <img src="images/size_chart/trouser.png" alt="" class="center">
         </div>
 

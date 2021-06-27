@@ -42,6 +42,11 @@ include('includes/sidebar.php');
                 <div class="col-md-12">
                     <?php include('message.php'); ?>
                     <div class="card">
+                        <div class="card-header">
+                            <h4>
+                                Orders
+                            </h4>
+                        </div>
                         <div class="card-body">
                             <table class="table table-bordered">
                                 <thead>

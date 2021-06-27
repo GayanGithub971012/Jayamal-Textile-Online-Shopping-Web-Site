@@ -199,11 +199,13 @@ include('config/dbcon.php');
         </div>
       </div>
     </div>
-
+    
 
     <div class="site-section">
       <div class="container">
-
+      <?php
+      include('../admin/message.php');
+    ?>
         <div class="row">
           <div class="col-md-12">
             <h2 class="h3 mb-3 text-black">Customized Uniform</h2>
@@ -212,109 +214,350 @@ include('config/dbcon.php');
 
         <div class="row">
           <div class="col-md-12">
-            <form action="#" method="post">
+            <form action="code.php" method="POST">
               <div class="p-3 p-lg-5 border">
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group row">
                       <div class="col-md-12">
-                        <label for="c_fname" class="text-black">Unifrom Category<span class="text-danger">*</span></label>
-                        <select class="form-control" name="uni_category" id="exampleFormControlSelect1">
-                          <option>Pre school frock</option>
-                          <option>School frock</option>
-                          <option>Skirt</option>
-                          <option>Shirt</option>
-                          <option>Short</option>
-                          <option>Trouser</option>
+                        <label for="exampleFormControlSelect1" class="text-black">Uniform Category<span class="text-danger">*</span></label>
+                        <select class="form-control" name="messagetype" id="messagetype" onchange="text_box_show()">
+                          <?php
+
+                          $query = "SELECT * FROM categoryprice";
+                          $query_run = mysqli_query($con, $query);
+
+                          if (mysqli_num_rows($query_run) > 0) {
+                            foreach ($query_run as $uni) {
+                          ?>
+                              <option value="<?= $uni['c_name'] ?>"><?= $uni['c_name'] ?></option>
+                            <?php
+                            }
+                          } else {
+                            ?>
+                            <P>No Record Found</p>
+                          <?php
+                          }
+                          ?>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-md-12">
+                        <label for="institution" class="text-black">Institution<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="institution" name="institution" placeholder="Enter your institution" >
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <div class="col-md-12">
+                        <label for="color" class="text-black">Color<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="color" name="color" placeholder="Color of uniform" >
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <div class="col-md-12">
+                        <label for="fabric_type" class="text-black">Fabric Type<span class="text-danger">*</span></label>
+                        <select class="form-control" name="fabric_type" id="fabric_type">
+                          <?php
+
+                          $query = "SELECT fabric_Type FROM fabric";
+                          $query_run = mysqli_query($con, $query);
+
+                          if (mysqli_num_rows($query_run) > 0) {
+                            foreach ($query_run as $uni) {
+                          ?>
+
+                              <option><?= $uni['fabric_Type'] ?></option>
+
+                            <?php
+                            }
+                          } else {
+                            ?>
+                            <P>No Record Found</p>
+                          <?php
+                          }
+                          ?>
                         </select>
                       </div>
                     </div>
                     <div class="form-group row">
                       <div class="col-md-12">
-                        <label for="uni_institition" class="text-black">Institution<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="uni_institition" name="uni_institition" placeholder="Enter your institution">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <div class="col-md-12">
-                        <label for="uni_color" class="text-black">Color<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="uni_color" name="uni_color" placeholder="Color of uniform">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <div class="col-md-12">
-                        <label for="exampleFormControlSelect1" class="text-black">Fabric Type<span class="text-danger">*</span></label>
-                        <select class="form-control" name="uni_" id="exampleFormControlSelect1">
-                          <option>1</option>
-                          <option>2</option>
-                          <option>3</option>
-                          <option>4</option>
-                          <option>5</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <div class="col-md-12">
-                        <label for="exampleFormControlSelect1" class="text-black">Size<span class="text-danger">*</span></label>
-                        <select class="form-control" name="uni_" id="exampleFormControlSelect1">
-                          <option>1</option>
-                          <option>2</option>
-                          <option>3</option>
-                          <option>4</option>
-                          <option>5</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <div class="col-md-12">
-                        <label for="c_subject" class="text-black">Quantity</label>
-                        <input type="text" class="form-control" id="c_subject" name="c_subject">
+                        <label for="c_qty" class="text-black">Quantity</label>
+                        <input type="text" class="form-control" id="c_qty" name="c_qty" >
                       </div>
                     </div>
                     <div class="form-group">
-                      <label for="c_subject" class="text-black">Add Image</label>
-                      <input type="file" name="u_image" class="form-control btn-sm">
+                      <label for="img" class="text-black">Add Image</label>
+                      <input type="file" name="img" id="img" class="form-control btn-sm" >
+                    </div>
+                    <div class="form-group row">
+                      <div class="col-md-12">
+                        <label for="extra_note" class="text-black">Extra Note</label>
+                        <textarea name="extra_note" id="extra_note" cols="30" rows="7" class="form-control"></textarea>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <div class="col-md-12">
+                        <input type="submit" class="btn btn-dark btn-lg btn-block" name="AddCuniform" value="Add to Cart">
+                      </div>
                     </div>
                   </div>
                   <div class="col-md-6">
-                    <div class="form-group row">
-                      <div class="col-md-12">
-                        <label for="c_subject" class="text-black">Measurement 01</label>
-                        <input type="text" class="form-control" id="c_subject" name="c_subject">
+                    <div id="Pre_school_frock" style="display:none;">
+                      <div class="form-group row">
+                        <div class="col-md-12">
+                          <label for="ps_shoulder_length" class="text-black">Shoulder Length</label>
+                          <input type="text" class="form-control" id="ps_shoulder_length" name="ps_shoulder_length" >
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-md-12">
+                          <label for="ps_sleeve_length" class="text-black">Sleeve Length</label>
+                          <input type="text" class="form-control" id="ps_sleeve_length" name="ps_sleeve_length" >
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-md-12">
+                          <label for="ps_sleeve_circumference" class="text-black">Sleeve Circumference</label>
+                          <input type="text" class="form-control" id="ps_sleeve_circumference" name="ps_sleeve_circumference" >
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-md-12">
+                          <label for="ps_arm_hole" class="text-black">Arm Hole</label>
+                          <input type="text" class="form-control" id="ps_arm_hole" name="ps_arm_hole" >
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-md-12">
+                          <label for="ps_chest" class="text-black">Chest</label>
+                          <input type="text" class="form-control" id="ps_chest" name="ps_chest" >
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-md-12">
+                          <label for="ps_waist" class="text-black">Waist</label>
+                          <input type="text" class="form-control" id="ps_waist" name="ps_waist" >
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-md-12">
+                          <label for="ps_shoulder_to_waist" class="text-black">Shoulder to Waist</label>
+                          <input type="text" class="form-control" id="ps_shoulder_to_waist" name="ps_shoulder_to_waist" >
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-md-12">
+                          <label for="ps_full_length" class="text-black">Full Length</label>
+                          <input type="text" class="form-control" id="ps_full_length" name="ps_full_length" >
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-md-12">
+                          <label for="ps_hip" class="text-black">Hip</label>
+                          <input type="text" class="form-control" id="ps_hip" name="ps_hip" >
+                        </div>
                       </div>
                     </div>
-                    <div class="form-group row">
-                      <div class="col-md-12">
-                        <label for="c_subject" class="text-black">Measurement 02</label>
-                        <input type="text" class="form-control" id="c_subject" name="c_subject">
+                    <div id="School_frock" style="display:none;">
+                      <div class="form-group row">
+                        <div class="col-md-12">
+                          <label for="sch_shoulder_length" class="text-black">Shoulder Length</label>
+                          <input type="text" class="form-control" id="sch_shoulder_length" name="sch_shoulder_length" >
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-md-12">
+                          <label for="sch_sleeve_length" class="text-black">Sleeve Length</label>
+                          <input type="text" class="form-control" id="sch_sleeve_length" name="sch_sleeve_length" >
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-md-12">
+                          <label for="sch_sleeve_circumference" class="text-black">Sleeve Circumference</label>
+                          <input type="text" class="form-control" id="sch_sleeve_circumference" name="sch_sleeve_circumference" >
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-md-12">
+                          <label for="sch_arm_hole" class="text-black">Arm Hole</label>
+                          <input type="text" class="form-control" id="sch_arm_hole" name="sch_arm_hole" >
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-md-12">
+                          <label for="sch_chest" class="text-black">Chest</label>
+                          <input type="text" class="form-control" id="sch_chest" name="sch_chest" >
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-md-12">
+                          <label for="sch_waist" class="text-black">Waist</label>
+                          <input type="text" class="form-control" id="sch_waist" name="sch_waist" >
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-md-12">
+                          <label for="sch_shoulder_to_waist" class="text-black">Shoulder to Waist</label>
+                          <input type="text" class="form-control" id="sch_shoulder_to_waist" name="sch_shoulder_to_waist" >
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-md-12">
+                          <label for="sch_full_length" class="text-black">Full Length</label>
+                          <input type="text" class="form-control" id="sch_full_length" name="sch_full_length" >
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-md-12">
+                          <label for="sch_hip" class="text-black">Hip</label>
+                          <input type="text" class="form-control" id="sch_hip" name="sch_hip" >
+                        </div>
                       </div>
                     </div>
-                    <div class="form-group row">
-                      <div class="col-md-12">
-                        <label for="c_subject" class="text-black">Measurement 03</label>
-                        <input type="text" class="form-control" id="c_subject" name="c_subject">
+                    <div id="Skirt" style="display:none;">
+                      <div class="form-group row">
+                        <div class="col-md-12">
+                          <label for="ski_chest" class="text-black">Chest</label>
+                          <input type="text" class="form-control" id="ski_chest" name="ski_chest" >
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-md-12">
+                          <label for="ski_waist" class="text-black">Waist</label>
+                          <input type="text" class="form-control" id="ski_waist" name="ski_waist" >
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-md-12">
+                          <label for="ski_full_length" class="text-black">Full Length</label>
+                          <input type="text" class="form-control" id="ski_full_length" name="ski_full_length" >
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-md-12">
+                          <label for="ski_hip" class="text-black">Hip</label>
+                          <input type="text" class="form-control" id="ski_hip" name="ski_hip" >
+                        </div>
                       </div>
                     </div>
-                    <div class="form-group row">
-                      <div class="col-md-12">
-                        <label for="c_subject" class="text-black">Measurement 04</label>
-                        <input type="text" class="form-control" id="c_subject" name="c_subject">
+                    <div id="Shirt" style="display:none;">
+                      <div class="form-group row">
+                        <div class="col-md-12">
+                          <label for="shi_shoulder_length" class="text-black">Shoulder Length</label>
+                          <input type="text" class="form-control" id="shi_shoulder_length" name="shi_shoulder_length" >
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-md-12">
+                          <label for="shi_sleeve_length" class="text-black">Sleeve Length</label>
+                          <input type="text" class="form-control" id="shi_sleeve_length" name="shi_sleeve_length" >
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-md-12">
+                          <label for="shi_sleeve_circumference" class="text-black">Sleeve Circumference</label>
+                          <input type="text" class="form-control" id="shi_sleeve_circumference" name="shi_sleeve_circumference" >
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-md-12">
+                          <label for="shi_arm_hole" class="text-black">Arm Hole</label>
+                          <input type="text" class="form-control" id="shi_arm_hole" name="shi_arm_hole" >
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-md-12">
+                          <label for="shi_chest" class="text-black">Chest</label>
+                          <input type="text" class="form-control" id="shi_chest" name="shi_chest" >
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-md-12">
+                          <label for="shi_waist" class="text-black">Waist</label>
+                          <input type="text" class="form-control" id="shi_waist" name="shi_waist" >
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-md-12">
+                          <label for="shi_full_length" class="text-black">Full Length</label>
+                          <input type="text" class="form-control" id="shi_full_length" name="shi_full_length" >
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-md-12">
+                          <label for="shi_shoulder_to_waist" class="text-black">Shoulder to Waist</label>
+                          <input type="text" class="form-control" id="shi_shoulder_to_waist" name="shi_shoulder_to_waist" >
+                        </div>
                       </div>
                     </div>
-                    <div class="form-group row">
-                      <div class="col-md-12">
-                        <label for="c_message" class="text-black">Extra Note</label>
-                        <textarea name="c_message" id="c_message" cols="30" rows="7" class="form-control"></textarea>
+                    <div id="Short" style="display:none;">
+                      <div class="form-group row">
+                        <div class="col-md-12">
+                          <label for="sho_full_length" class="text-black">Full Length</label>
+                          <input type="text" class="form-control" id="sho_full_length" name="sho_full_length" >
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-md-12">
+                          <label for="sho_front_crotch" class="text-black">Front Crotch</label>
+                          <input type="text" class="form-control" id="sho_front_crotch" name="sho_front_crotch" >
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-md-12">
+                          <label for="sho_hip" class="text-black">Hip</label>
+                          <input type="text" class="form-control" id="sho_hip" name="sho_hip" >
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-md-12">
+                          <label for="sho_waist" class="text-black">Waist</label>
+                          <input type="text" class="form-control" id="sho_waist" name="sho_waist" >
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-md-12">
+                          <label for="sho_bottom" class="text-black">Bottom</label>
+                          <input type="text" class="form-control" id="sho_bottom" name="sho_bottom" >
+                        </div>
                       </div>
                     </div>
-                    <div class="form-group row">
-                      <div class="col-lg-12">
-                        <button class="btn btn-dark btn-lg btn-block"><i class="icon icon-cart-plus"></i>&nbsp;&nbsp;Add to cart</button>
+                    <div id="Trouser" style="display:none;">
+                      <div class="form-group row">
+                        <div class="col-md-12">
+                          <label for="tro_full_length" class="text-black">Full Length</label>
+                          <input type="text" class="form-control" id="tro_full_length" name="tro_full_length" >
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-md-12">
+                          <label for="tro_front_crotch" class="text-black">Front Crotch</label>
+                          <input type="text" class="form-control" id="tro_front_crotch" name="tro_front_crotch" >
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-md-12">
+                          <label for="tro_hip" class="text-black">Hip</label>
+                          <input type="text" class="form-control" id="tro_hip" name="tro_hip" >
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-md-12">
+                          <label for="tro_waist" class="text-black">Waist</label>
+                          <input type="text" class="form-control" id="tro_waist" name="tro_waist" >
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-md-12">
+                          <label for="tro_bottom" class="text-black">Bottom</label>
+                          <input type="text" class="form-control" id="tro_bottom" name="tro_bottom" >
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-
               </div>
             </form>
           </div>
@@ -387,6 +630,59 @@ include('config/dbcon.php');
 
   <script type="text/javascript">
     $(document).ready(function() {
+      // Send product details in the server
+      $(".addItemBtn").click(function(e) {
+        e.preventDefault();
+        var $form = $(this).closest(".form-submit");
+        var uni_institition = $form.find(".uni_institition").val();
+        var uni_color = $form.find(".uni_color").val()
+        var uni_fabric_type = $form.find(".uni_fabric_type").val();
+        var uni_qty = $form.find(".uni_qty").val();
+        var uni_img = $form.find(".uni_img").val()
+        var uni_extra_note = $form.find(".uni_extra_note").val();
+
+        var shoulder_length = $form.find(".shoulder_length").val();
+        var sleeve_length = $form.find(".sleeve_length").val()
+        var sleeve_circumference = $form.find(".sleeve_circumference").val();
+        var arm_hole = $form.find(".arm_hole").val()
+        var chest = $form.find(".chest").val();
+        var waist = $form.find(".waist").val();
+        var shoulder_to_waist = $form.find(".shoulder_to_waist").val()
+        var full_length = $form.find(".full_length").val();
+        var hip = $form.find(".hip").val();
+        var bottom = $form.find(".bottom").val()
+        var front_crotch = $form.find(".front_crotch").val();
+
+        $.ajax({
+          url: 'code.php',
+          method: 'post',
+          data: {
+            uni_institition: uni_institition,
+            uni_color: uni_color,
+            uni_fabric_type: uni_fabric_type,
+            uni_qty: uni_qty,
+            uni_img: uni_img,
+            uni_extra_note: uni_extra_note,
+            shoulder_length: shoulder_length,
+            sleeve_length: sleeve_length,
+            sleeve_circumference: sleeve_circumference,
+            arm_hole: arm_hole,
+            chest: chest,
+            waist: waist,
+            shoulder_to_waist: shoulder_to_waist,
+            full_length: full_length,
+            hip: hip,
+            bottom: bottom,
+            front_crotch: front_crotch
+          },
+          success: function(response) {
+            $("#message").html(response);
+            window.scrollTo(0, 0);
+            load_cart_item_number();
+          }
+        });
+      });
+
 
       // Load total no.of items added in the cart and display in the navbar
       load_cart_item_number();
@@ -405,7 +701,7 @@ include('config/dbcon.php');
       }
     });
   </script>
-
+  <script src="js/customized_uniform.js"></script>
 </body>
 
 </html>

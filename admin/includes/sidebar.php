@@ -80,7 +80,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="./fabric.php" class="nav-link">
+              <a href="./fabrics.php" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Fabrics Table</p>
               </a>
@@ -111,7 +111,6 @@
             <i class="nav-icon far fa-user"></i>
             <p>
               Admin Profile
-              <span class="badge badge-info right">2</span>
             </p>
           </a>
         </li>
@@ -120,14 +119,6 @@
             <i class="nav-icon fa fa-users"></i>
             <p>
               Registered Users
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="pages/kanban.html" class="nav-link">
-            <i class="nav-icon fa fa-cog"></i>
-            <p>
-              Role for User
             </p>
           </a>
         </li>

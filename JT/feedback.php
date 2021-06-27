@@ -2,9 +2,6 @@
 session_start();
 include('config/dbcon.php');
 ?>
-<?php
-include('config/dbcon.php');
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -198,10 +195,15 @@ include('config/dbcon.php');
       </div>
     </div>
 
+    
+
     <section class="w3l-customers-sec-6">
       <div class="customers-sec-6-cintent py-5">
         <!-- /customers-->
         <div class="container py-lg-5">
+        <?php
+      include('../admin/message.php');
+    ?>
           <h3 class="hny-title text-center mb-0 ">Customers <span class="text-warning">Love</span></h3>
           <p class="mb-5 text-center">What People Say</p>
           <div class="row customerhny my-lg-5 my-4">
@@ -220,7 +222,7 @@ include('config/dbcon.php');
 
 
                       <?php
-                      $query = "SELECT * FROM feedback, users WHERE feedback.user_ID = users.user_ID LIMIT 4 OFFSET 2";
+                      $query = "SELECT * FROM feedback, users WHERE feedback.user_ID = users.user_ID LIMIT 4";
                       $query_run = mysqli_query($con, $query);
 
                       if (mysqli_num_rows($query_run) > 0) {
@@ -229,7 +231,7 @@ include('config/dbcon.php');
                           <div class="col-md-3">
                             <div class="customer-info text-center">
                               <div class="feedback-hny">
-                                <span class="fa fa-quote-left text-warning"></span>
+                                <span class="icon icon-quote-left text-warning"></span>
                                 <p class="feedback-para"><?php echo $row['f_description'] ?></p>
                               </div>
                               <div class="feedback-review mt-4">
@@ -260,7 +262,7 @@ include('config/dbcon.php');
 
 
                       <?php
-                      $query = "SELECT * FROM feedback, users WHERE feedback.user_ID = users.user_ID LIMIT 4 OFFSET 3";
+                      $query = "SELECT * FROM feedback, users WHERE feedback.user_ID = users.user_ID LIMIT 4 OFFSET 4";
                       $query_run = mysqli_query($con, $query);
 
                       if (mysqli_num_rows($query_run) > 0) {
@@ -269,7 +271,7 @@ include('config/dbcon.php');
                           <div class="col-md-3">
                             <div class="customer-info text-center">
                               <div class="feedback-hny">
-                                <span class="fa fa-quote-left text-warning"></span>
+                                <span class="icon icon-quote-left text-warning"></span>
                                 <p class="feedback-para"><?php echo $row['f_description'] ?></p>
                               </div>
                               <div class="feedback-review mt-4">
@@ -316,18 +318,8 @@ include('config/dbcon.php');
             <form action="code.php" method="POST">
               <div class="p-3 p-lg-5 border">
                 <div class="form-group row">
-                  <div class="col-md-9">
-                    <label for="name" class="text-black">Name <span class="text-danger">*</span></label>
-                    <input type="name" class="form-control" id="name" name="name">
-                  </div>
-                  <div class="col-md-3">
-                    <label for="date" class="text-black">Date <span class="text-danger">*</span></label>
-                    <input type="date" class="form-control" id="date" name="date">
-                  </div>
-                </div>
-                <div class="form-group row">
                   <div class="col-md-12">
-                    <label for="message" class="text-black">Message </label>
+                    <label for="message" class="text-black">Message</label>
                     <textarea name="message" id="message" cols="30" rows="7" class="form-control"></textarea>
                   </div>
                 </div>
