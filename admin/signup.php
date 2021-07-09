@@ -40,37 +40,37 @@ if (isset($_SESSION['auth'])) {
                             <div class="row">
                                 <div class="form-group col-md-6">
                                     <lable for="">First Name</lable>
-                                    <input type="text" name="firstname" class="form-control" placeholder="First Name">
+                                    <input type="text" name="firstname" class="form-control" placeholder="First Name" required>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <lable for="">Last Name</lable>
-                                    <input type="text" name="lastname" class="form-control" placeholder="Last Name">
+                                    <input type="text" name="lastname" class="form-control" placeholder="Last Name" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <lable for="">User Name</lable>
-                                <input type="text" name="username" class="form-control" placeholder="User Name">
+                                <input type="text" name="username" class="form-control" placeholder="User Name" required>
                             </div>
                             <div class="form-group">
                                 <lable for="">Phone Number</lable>
-                                <input type="text" name="phonenumber" class="form-control" placeholder="Phone Number">
+                                <input type="text" name="phonenumber" class="form-control" placeholder="Phone Number" required>
                             </div>
                             <div class="form-group">
                                 <lable for="">Address</lable>
-                                <input type="text" name="address" class="form-control" placeholder="Address">
+                                <input type="text" name="address" class="form-control" placeholder="Address" required>
                             </div>
                             <div class="form-group">
                                 <lable for="">Email</lable>
-                                <input type="text" name="email" class="form-control" placeholder="Email">
+                                <input type="text" name="email" class="form-control" placeholder="Email" required>
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-6">
                                     <lable for="">Password</lable>
-                                    <input type="password" name="password" class="form-control" placeholder="Password">
+                                    <input type="password" name="password" class="form-control" placeholder="Password" required>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <lable for="">Confirm Password</lable>
-                                    <input type="password" name="confirmpassword" class="form-control" placeholder="Confirm Password">
+                                    <input type="password" name="confirmpassword" class="form-control" placeholder="Confirm Password" required>
                                 </div>
                             </div>
 

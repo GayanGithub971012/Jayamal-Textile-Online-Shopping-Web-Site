@@ -156,7 +156,7 @@ if(isset($_POST['addUser_website']))
     else
     {
         $_SESSION['status'] = "Password and confirm password does not match.!";
-        header("Location: registered.php");
+        header("Location: signup.php");
     }
 
     

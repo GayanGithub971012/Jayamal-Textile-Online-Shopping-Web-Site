@@ -336,20 +336,12 @@ include('config/dbcon.php');
               </ul>
             </div>
 
-            <div class="block-7">
-              <form action="#" method="post">
-                <label for="email_subscribe" class="footer-heading">Subscribe</label>
-                <div class="form-group">
-                  <input type="text" class="form-control py-4" id="email_subscribe" placeholder="Email">
-                  <input type="submit" class="btn btn-sm btn-dark" value="Send">
-                </div>
-              </form>
-            </div>
+            
           </div>
         </div>
         <div class="text-center">
           © 2020 Copyright:
-          <a class="text-dark" href="https://mdbootstrap.com/">www.jayamalitext.com</a>
+          <a class="text-dark" href="index.php">www.jayamalitext.com</a>
         </div>
       </div>
     </footer>

@@ -134,7 +134,7 @@ include('config/dbcon.php');
 <?php include('includes/script.php'); ?>
 
 <script>
-  $(document).ready(function() {
+    $(document).ready(function() {
 
     $('.email_id').keyup(function(e) {
       var email = $('.email_id').val();

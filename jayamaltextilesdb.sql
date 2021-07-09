@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 09, 2021 at 04:10 AM
+-- Generation Time: Jul 09, 2021 at 02:20 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -117,7 +117,9 @@ INSERT INTO `customizeduniform` (`cu_ID`, `institution`, `color`, `fabric_Type`,
 (32, 'yuiui', 'yjg', 'Denim', 'drgd', 0x63796265722e504e47, 10, 10, 10, 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1:08:45 AMJun/27/2021'),
 (33, 'tfyh', 'gyhg', 'Denim', 'htgh', 0x63796265722e504e47, 10, 10, 10, 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1:09:43 AMJun/27/2021'),
 (34, 'test1', 'test1', 'Denim', 'dfg', 0x63796265722e504e47, NULL, 4, 4, 4, NULL, NULL, NULL, NULL, NULL, 4, 4, '1:13:47 AMJun/27/2021'),
-(35, 'test1', 'test1', 'Denim', 'ererere', 0x626f792d7573696e672d6869732d6c6170746f702d636f6d70757465722e6a7067, 8, 8, 8, 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1:26:48 AMJun/27/2021');
+(35, 'test1', 'test1', 'Denim', 'ererere', 0x626f792d7573696e672d6869732d6c6170746f702d636f6d70757465722e6a7067, 8, 8, 8, 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1:26:48 AMJun/27/2021'),
+(36, 'fg', 'test', 'Cotton', 'gfjfgjjj', 0x46425f494d475f313632353538393039373139392e6a7067, 45, 45, 50, 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '6:53:31 AMJul/09/2021'),
+(37, '', '', 'Cotton', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, '13:37:19 PMJul/09/2021');
 
 -- --------------------------------------------------------
 
@@ -166,7 +168,10 @@ INSERT INTO `feedback` (`feedback_ID`, `user_ID`, `f_date`, `f_description`) VAL
 (7, 30, '2021-06-24', 'rtjeyjejyj'),
 (8, 30, '2021-06-24', 'tjkedyjky'),
 (9, 30, '2021-06-24', 'tjkedyjky'),
-(10, 2, '2021-06-27', 'gayan');
+(10, 2, '2021-06-27', 'gayan'),
+(11, 30, '2021-07-09', 'today'),
+(12, 30, '2021-07-09', 'jjhhjklj'),
+(13, 30, '2021-07-09', 'gfjfgjfg');
 
 -- --------------------------------------------------------
 
@@ -189,11 +194,7 @@ CREATE TABLE `orderdetails` (
 --
 
 INSERT INTO `orderdetails` (`order_ID`, `uniform_ID`, `user_ID`, `selected_size`, `price`, `quantity`, `total_price`) VALUES
-(34, 'ski_35', 2, 'Can be change', 63534, 8, 508272),
-(36, 'sch_1', 30, 'size2', 632, 1, 632),
-(37, 'sho_1', 30, 'size2', 500, 1, 500),
-(38, 'sch_1', 30, 'size2', 632, 1, 632),
-(39, 'sch_1', 30, 'size2', 632, 1, 632);
+(34, 'ski_35', 2, 'Can be change', 63534, 8, 508272);
 
 -- --------------------------------------------------------
 
@@ -209,7 +210,6 @@ CREATE TABLE `orders` (
   `due_date` date NOT NULL,
   `delivery_address` varchar(255) NOT NULL,
   `district` text NOT NULL,
-  `postal_code` int(255) NOT NULL,
   `status` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -217,9 +217,11 @@ CREATE TABLE `orders` (
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`order_ID`, `user_ID`, `orders`, `order_date`, `due_date`, `delivery_address`, `district`, `postal_code`, `status`) VALUES
-(16, 30, '22(1), 23(2), 24(3), 25(4), 26(5), 27(5), 28(6)', '2021-06-26', '2021-06-19', 'Nikaweratiya', 'Matale', 754454, 'Packing'),
-(17, 2, 'ski_33(45), sho_34(4), sch_1(1)', '2021-06-27', '2021-06-19', 'rtgyrt', 'Matale', 123456, '');
+INSERT INTO `orders` (`order_ID`, `user_ID`, `orders`, `order_date`, `due_date`, `delivery_address`, `district`, `status`) VALUES
+(16, 30, '22(1), 23(2), 24(3), 25(4), 26(5), 27(5), 28(6)', '2021-06-26', '2021-06-19', 'Nikaweratiya', 'Matale', 'Packing'),
+(17, 2, 'ski_33(45), sho_34(4), sch_1(1)', '2021-06-27', '2021-06-19', 'rtgyrt', 'Matale', ''),
+(18, 30, 'ski_35(8), pre_1(1)', '2021-07-09', '2021-07-17', 'rtrt', 'Mullaitivu', ''),
+(19, 30, 'ski_35(8), pre_1(1)', '2021-07-09', '2021-07-16', 'today', 'Nuwara Eliya', '');
 
 -- --------------------------------------------------------
 
@@ -392,25 +394,25 @@ ALTER TABLE `usertype`
 -- AUTO_INCREMENT for table `customizeduniform`
 --
 ALTER TABLE `customizeduniform`
-  MODIFY `cu_ID` int(45) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `cu_ID` int(45) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `feedback_ID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `feedback_ID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `orderdetails`
 --
 ALTER TABLE `orderdetails`
-  MODIFY `order_ID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `order_ID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `order_ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `users`

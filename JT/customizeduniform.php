@@ -203,9 +203,9 @@ include('config/dbcon.php');
 
     <div class="site-section">
       <div class="container">
-      <?php
-      include('../admin/message.php');
-    ?>
+        <?php
+      include('messageJT.php');
+      ?>
         <div class="row">
           <div class="col-md-12">
             <h2 class="h3 mb-3 text-black">Customized Uniform</h2>
@@ -246,19 +246,19 @@ include('config/dbcon.php');
                     <div class="form-group row">
                       <div class="col-md-12">
                         <label for="institution" class="text-black">Institution<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="institution" name="institution" placeholder="Enter your institution" >
+                        <input type="text" class="form-control" id="institution" name="institution" placeholder="Enter your institution" required>
                       </div>
                     </div>
                     <div class="form-group row">
                       <div class="col-md-12">
                         <label for="color" class="text-black">Color<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="color" name="color" placeholder="Color of uniform" >
+                        <input type="text" class="form-control" id="color" name="color" placeholder="Color of uniform" required>
                       </div>
                     </div>
                     <div class="form-group row">
                       <div class="col-md-12">
                         <label for="fabric_type" class="text-black">Fabric Type<span class="text-danger">*</span></label>
-                        <select class="form-control" name="fabric_type" id="fabric_type">
+                        <select class="form-control" name="fabric_type" id="fabric_type" required>
                           <?php
 
                           $query = "SELECT fabric_Type FROM fabric";
@@ -284,12 +284,12 @@ include('config/dbcon.php');
                     <div class="form-group row">
                       <div class="col-md-12">
                         <label for="c_qty" class="text-black">Quantity</label>
-                        <input type="text" class="form-control" id="c_qty" name="c_qty" >
+                        <input type="text" class="form-control" id="c_qty" name="c_qty" required>
                       </div>
                     </div>
                     <div class="form-group">
                       <label for="img" class="text-black">Add Image</label>
-                      <input type="file" name="img" id="img" class="form-control btn-sm" >
+                      <input type="file" name="img" id="img" class="form-control btn-sm" required>
                     </div>
                     <div class="form-group row">
                       <div class="col-md-12">
@@ -598,20 +598,12 @@ include('config/dbcon.php');
               </ul>
             </div>
 
-            <div class="block-7">
-              <form action="#" method="post">
-                <label for="email_subscribe" class="footer-heading">Subscribe</label>
-                <div class="form-group">
-                  <input type="text" class="form-control py-4" id="email_subscribe" placeholder="Email">
-                  <input type="submit" class="btn btn-sm btn-dark" value="Send">
-                </div>
-              </form>
-            </div>
+            
           </div>
         </div>
         <div class="text-center">
           © 2020 Copyright:
-          <a class="text-dark" href="https://mdbootstrap.com/">www.jayamalitext.com</a>
+          <a class="text-dark" href="index.php">www.jayamalitext.com</a>
         </div>
       </div>
     </footer>

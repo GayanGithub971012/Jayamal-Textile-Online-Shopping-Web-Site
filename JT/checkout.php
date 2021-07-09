@@ -241,13 +241,13 @@ if (isset($_GET['user_id'])) {
                 <div class="form-group row">
                   <div class="col-md-12">
                     <label for="address" class="text-black">Address <span class="text-danger">*</span></label>
-                    <textarea type="text" class="form-control" id="address" name="address" placeholder="Address"></textarea>
+                    <textarea type="text" class="form-control" id="address" name="address" placeholder="Address" required></textarea>
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label for="district" class="text-black">District<span class="text-danger">*</span></label>
-                  <select name="district" id="district" class="form-control">
+                  <select name="district" id="district" class="form-control" required>
                     <option value="" selected disabled>Distrct</option>
                     <option> Ampara</option>
                     <option> Anuradhapura</option>
@@ -275,17 +275,9 @@ if (isset($_GET['user_id'])) {
                     <option> Vavuniya</option>
                   </select>
                 </div>
-                <div class="form-group row">
-
-                  <div class="col-md-12">
-                    <label for="postal" class="text-black">Posta / Zip <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="postal" name="postal">
-                    <a href="https://en.youbianku.com/Sri_Lanka">If you don't know your postal code! <span class="text-info">Click Here..<span></a>
-                  </div>
-                </div>
                 <div class="py-2 mb-3">
                   <label for="due_date" class="text-black">Order Due Date</label><span class="text-danger">*</span></label>
-                  <input type="date" class="form-control" name="due_date">
+                  <input type="date" class="form-control" name="due_date" required>
                 </div>
 
                 <div class="form-group">
@@ -378,20 +370,12 @@ if (isset($_GET['user_id'])) {
               </ul>
             </div>
 
-            <div class="block-7">
-              <form action="#" method="post">
-                <label for="email_subscribe" class="footer-heading">Subscribe</label>
-                <div class="form-group">
-                  <input type="text" class="form-control py-4" id="email_subscribe" placeholder="Email">
-                  <input type="submit" class="btn btn-sm btn-dark" value="Send">
-                </div>
-              </form>
-            </div>
+            
           </div>
         </div>
         <div class="text-center">
           © 2020 Copyright:
-          <a class="text-dark" href="https://mdbootstrap.com/">www.jayamalitext.com</a>
+          <a class="text-dark" href="index.php">www.jayamalitext.com</a>
         </div>
       </div>
     </footer>

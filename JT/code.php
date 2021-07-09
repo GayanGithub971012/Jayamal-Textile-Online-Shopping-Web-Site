@@ -122,8 +122,8 @@ if (isset($_POST['check_Emailbtn'])) {
 ?>
 <?php
 // Add products into the cart table
-if (isset($_SESSION['auth_user'])) {
-    if (isset($_POST['u_id'])) {
+if (isset($_POST['u_id'])) {
+    if (isset($_SESSION['auth_user'])) {
         $user_id = $_SESSION['auth_user']['user_id'];
         $u_id = $_POST['u_id'];
         $u_qty = $_POST['u_qty'];
@@ -181,7 +181,13 @@ if (isset($_SESSION['auth_user'])) {
             header("Location: uniform-single.php");
         }
     }
-} else {
+    else{
+        echo '<script>alert("Logging first!")</script>';
+    }
+} 
+else
+{
+    
 }
 ?>
 <?php
@@ -239,14 +245,13 @@ if (isset($_SESSION['auth_user'])) {
         $grand_total = $_POST['grand_total'];
         $address = $_POST['address'];
         $district = $_POST['district'];
-        $postal = $_POST['postal'];
         $due_date = $_POST['due_date'];
         $order_date = date("Y-m-d");
 
         $data = '';
 
-        $stmt = $con->prepare('INSERT INTO orders (user_ID,orders,order_date,due_date,delivery_address,district,postal_code)VALUES(?,?,?,?,?,?,?)');
-        $stmt->bind_param('sssssss', $user_id, $products, $order_date, $due_date, $address, $district, $postal);
+        $stmt = $con->prepare('INSERT INTO orders (user_ID,orders,order_date,due_date,delivery_address,district)VALUES(?,?,?,?,?,?)');
+        $stmt->bind_param('ssssss', $user_id, $products, $order_date, $due_date, $address, $district);
         $stmt->execute();
         $stmt2 = $con->prepare("DELETE FROM orderdetails WHERE user_ID = '$user_id'");
         $stmt2->execute();

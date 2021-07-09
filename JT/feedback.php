@@ -195,14 +195,14 @@ include('config/dbcon.php');
       </div>
     </div>
 
-    
+    s
 
     <section class="w3l-customers-sec-6">
       <div class="customers-sec-6-cintent py-5">
         <!-- /customers-->
         <div class="container py-lg-5">
         <?php
-      include('../admin/message.php');
+      include('messageJT.php');
     ?>
           <h3 class="hny-title text-center mb-0 ">Customers <span class="text-warning">FEEDBACK</span></h3>
           <p class="mb-5 text-center">What People Say</p>
@@ -213,6 +213,7 @@ include('config/dbcon.php');
                 <ol class="carousel-indicators">
                   <li data-target="#customerhnyCarousel" data-slide-to="0" class="active"></li>
                   <li data-target="#customerhnyCarousel" data-slide-to="1"></li>
+                  <li data-target="#customerhnyCarousel" data-slide-to="2"></li>
                 </ol>
                 <!-- Carousel items -->
                 <div class="carousel-inner">
@@ -263,6 +264,46 @@ include('config/dbcon.php');
 
                       <?php
                       $query = "SELECT * FROM feedback, users WHERE feedback.user_ID = users.user_ID LIMIT 4 OFFSET 4";
+                      $query_run = mysqli_query($con, $query);
+
+                      if (mysqli_num_rows($query_run) > 0) {
+                        foreach ($query_run as $row) {
+                      ?>
+                          <div class="col-md-3">
+                            <div class="customer-info text-center">
+                              <div class="feedback-hny">
+                                <span class="icon icon-quote-left text-warning"></span>
+                                <p class="feedback-para"><?php echo $row['f_description'] ?></p>
+                              </div>
+                              <div class="feedback-review mt-4">
+                                <img src="assets/images/c1.jpg" class="img-fluid" alt="">
+                                <h5><?php echo $row['username'] ?></h5>
+                              </div>
+                            </div>
+                          </div>
+                        <?php
+                        }
+                      } else {
+                        ?>
+                        <tr>
+                          <td>No Record Found</td>
+                        </tr>
+                      <?php
+                      }
+                      ?>
+
+
+                    </div>
+                    <!--.row-->
+                  </div>
+                  <!--.item-->
+
+                  <div class="carousel-item">
+                    <div class="row">
+
+
+                      <?php
+                      $query = "SELECT * FROM feedback, users WHERE feedback.user_ID = users.user_ID LIMIT 4 OFFSET 8";
                       $query_run = mysqli_query($con, $query);
 
                       if (mysqli_num_rows($query_run) > 0) {
@@ -364,20 +405,12 @@ include('config/dbcon.php');
               </ul>
             </div>
 
-            <div class="block-7">
-              <form action="#" method="post">
-                <label for="email_subscribe" class="footer-heading">Subscribe</label>
-                <div class="form-group">
-                  <input type="text" class="form-control py-4" id="email_subscribe" placeholder="Email">
-                  <input type="submit" class="btn btn-sm btn-dark" value="Send">
-                </div>
-              </form>
-            </div>
+            
           </div>
         </div>
         <div class="text-center">
           © 2020 Copyright:
-          <a class="text-dark" href="https://mdbootstrap.com/">www.jayamalitext.com</a>
+          <a class="text-dark" href="index.php">www.jayamalitext.com</a>
         </div>
       </div>
     </footer>
