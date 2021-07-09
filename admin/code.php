@@ -100,6 +100,7 @@ if(isset($_POST['check_Emailbtn']))
 }
 
 //user table add data from website
+
 if(isset($_POST['addUser_website']))
 {
     $firstname = $_POST['firstname'];
@@ -111,46 +112,66 @@ if(isset($_POST['addUser_website']))
     $password = $_POST['password'];
     $confirmpassword = $_POST['confirmpassword'];
 
+    function validate_phone_number($phone_num)
+{
+     // Allow +, - and . in phone number
+     $filtered_phone_number = filter_var($phone_num, FILTER_SANITIZE_NUMBER_INT);
+
+     // Check the lenght of number
+     // This can be customized if you want phone number from a specific country
+     if (strlen($filtered_phone_number) == 10 ) {
+        return true;
+     } else {
+       return false;
+     }
+}
+
     if($password == $confirmpassword)
     {
-        if(filter_var($email, FILTER_VALIDATE_EMAIL) == true)
-        {
-            $checkemail = "SELECT email FROM users WHERE email='$email'";
-            $checkemail_run = mysqli_query($con, $checkemail);
-
-            if(mysqli_num_rows($checkemail_run)>0)
+        if (validate_phone_number($phone) == true) {
+            if(filter_var($email, FILTER_VALIDATE_EMAIL) == true)
             {
-                //Taken Already exists
-                $_SESSION['status'] = "Email id is already taken.!";
-                header("Location: signup.php");
-            }
-            else
-            {
-                //Available = Record not found
-                $user_query = "INSERT INTO users (username,phonenumber,email,password) VALUES ('$username','$phone','$email','$password')";
-                $user_query_run = mysqli_query($con, $user_query);
-                $user_query1 = "INSERT INTO customer (firstname,lastname,address) VALUES ('$firstname','$lastname','$address')";
-                $user_query_run1 = mysqli_query($con, $user_query1);
+                $checkemail = "SELECT email FROM users WHERE email='$email'";
+                $checkemail_run = mysqli_query($con, $checkemail);
 
-                if($user_query_run)
+                if(mysqli_num_rows($checkemail_run)>0)
                 {
-                    $_SESSION['status'] = "User Added Successfully";
-                    header("Location: login.php");
+                    //Taken Already exists
+                    $_SESSION['status'] = "Email id is already taken.!";
+                    header("Location: signup.php");
                 }
                 else
                 {
-                    $_SESSION['status'] = "User Registration Failed";
-                    header("Location: signup.php");
-                }
-            }  
+                    //Available = Record not found
+                    $user_query = "INSERT INTO users (username,phonenumber,email,password) VALUES ('$username','$phone','$email','$password')";
+                    $user_query_run = mysqli_query($con, $user_query);
+                    $user_query1 = "INSERT INTO customer (firstname,lastname,address) VALUES ('$firstname','$lastname','$address')";
+                    $user_query_run1 = mysqli_query($con, $user_query1);
 
-        }
-        else
+                    if($user_query_run)
+                    {
+                        $_SESSION['status'] = "User Added Successfully";
+                        header("Location: login.php");
+                    }
+                    else
+                    {
+                        $_SESSION['status'] = "User Registration Failed";
+                        header("Location: signup.php");
+                    }
+                }  
+
+            }
+            else
+            {
+                $_SESSION['status'] = "Not a valid email address";
+                header("Location: signup.php");
+            }
+        } 
+        else 
         {
-            $_SESSION['status'] = "Not a valid email address";
+            $_SESSION['status'] = "Not a valid phone number";
             header("Location: signup.php");
         }
-
           
     }
     else

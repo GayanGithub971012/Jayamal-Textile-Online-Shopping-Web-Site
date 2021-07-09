@@ -77,7 +77,7 @@ include('includes/sidebar.php');
                                                 <td><?= $order['order_date'] ?></td>
                                                 <td><?= $order['orders'] ?></td>
                                                 <td><?= $order['due_date'] ?></td>
-                                                <td><?= $order['delivery_address'] ?>,<?= $order['district'] ?>,<?= $order['postal_code'] ?></td>
+                                                <td><?= $order['delivery_address'] ?>,<?= $order['district'] ?></td>
                                                 <td><?= $order['status'] ?></td>
                                                 <td>
                                                     <a href="orders-edit.php?order_id=<?php echo $order['order_ID']; ?>" class="btn btn-success">Edit</a>

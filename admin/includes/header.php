@@ -30,6 +30,8 @@
   <link rel="stylesheet" href="assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="shortcut icon" href="assets/dist/img/titlelogo.png">
+  <!-- password style -->
+  <link rel="stylesheet" href="assets/dist/css/password.css">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">

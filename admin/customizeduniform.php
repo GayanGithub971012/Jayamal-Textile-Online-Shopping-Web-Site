@@ -58,7 +58,7 @@ include('includes/sidebar.php');
                                         foreach ($query_run as $cus) {
                                     ?>
                                             <tr>
-                                                <td><?= $cus['uniform_ID'] ?></td>
+                                                <td><?= $cus['cu_ID'] ?></td>
                                                 <td><?= $cus['color'] ?></td>
                                                 <td><?= $cus['design_image'] ?></td>
                                                 <td><?= $cus['institution'] ?></td>
@@ -74,13 +74,13 @@ include('includes/sidebar.php');
                                                 <td><?= $cus['front_crotch'] ?></td>
                                                 <td><?= $cus['hip'] ?></td>
                                                 <td><?= $cus['bottom'] ?></td>
-                                                <td><?= $cus['fabric_type'] ?></td>
+                                                <td><?= $cus['fabric_Type'] ?></td>
                                                 <td>
                                                     <a href="product-edit.php?prod_id=<?php echo $prod_item['id']; ?>" class="btn btn-success">Edit</a>
                                                 </td>
                                                 <td>
                                                     <form action="code.php" method="POST">
-                                                        <input type="hidden" name="prod_delete_id" value="<?= $cus['uniform_ID']; ?>">
+                                                        <input type="hidden" name="prod_delete_id" value="<?= $cus['cu_ID']; ?>">
                                                         <button type="submit" name="prod_delete_btn" class="btn btn-danger">Delete</button>
                                                     </form>
                                                 </td>

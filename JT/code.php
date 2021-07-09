@@ -42,8 +42,9 @@ if (isset($_POST['addUser'])) {
 
 <?php
 include('config/dbcon.php');
-if (isset($_SESSION['auth_user'])) {
+
 if (isset($_POST['addfeedback'])) {
+    if (isset($_SESSION['auth_user'])) {
     
     $date = date("Y-m-d");
     $message = $_POST['message'];
@@ -59,7 +60,11 @@ if (isset($_POST['addfeedback'])) {
         $_SESSION['status'] = "Failed to sending your feedback";
         header("Location: feedback.php");
     }
-}
+    }
+    else{
+        $_SESSION['status'] = "Logging first!";
+        header("Location: feedback.php");
+    }
 }
 else{
 
@@ -181,7 +186,7 @@ if (isset($_POST['u_id'])) {
             header("Location: uniform-single.php");
         }
     }
-    else{
+    else {
         echo '<script>alert("Logging first!")</script>';
     }
 } 

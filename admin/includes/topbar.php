@@ -40,8 +40,7 @@
           ?>
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" href="adminprofile.php">Admin Profile</a>
           <form action="code.php" method="POST">
             <button type="submit" name="logout_btn" class="dropdown-item">Logout</button>
           </form>

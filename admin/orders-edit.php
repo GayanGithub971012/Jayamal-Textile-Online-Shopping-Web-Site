@@ -76,7 +76,7 @@ include('config/dbcon.php');
                                                         </div>
                                                         <div class="form-group">
                                                             <lable for="">delivery Address</lable>
-                                                            <input type="text" name="delivery_address" value="<?php echo $ord['delivery_address'] ?>,<?php echo $ord['district'] ?>,<?php echo $ord['postal_code'] ?>" class="form-control" placeholder="Phone Number" readonly>
+                                                            <input type="text" name="delivery_address" value="<?php echo $ord['delivery_address'] ?>,<?php echo $ord['district'] ?>" class="form-control" placeholder="Phone Number" readonly>
                                                         </div>
                                                         <div class="form-group">
                                                             <lable for="">Status</lable>
