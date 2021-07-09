@@ -206,41 +206,51 @@ include('config/dbcon.php');
 
         <div class="row mb-5">
           <div class="col-md-9 order-2">
-
-            <div class="row">
-              <div class="col-md-12 mb-5">
-                <div class="float-md-left mb-4">
-                  <h2 class="text-black h5">Shop All</h2>
-                </div>
-                <div class="d-flex">
-                  <div class="dropdown mr-1 ml-md-auto">
-                    <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Latest
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-                      <a class="dropdown-item" href="#">Men</a>
-                      <a class="dropdown-item" href="#">Women</a>
-                      <a class="dropdown-item" href="#">Children</a>
-                    </div>
-                  </div>
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuReference" data-toggle="dropdown">Reference</button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
-                      <a class="dropdown-item" href="#">Relevance</a>
-                      <a class="dropdown-item" href="#">Name, A to Z</a>
-                      <a class="dropdown-item" href="#">Name, Z to A</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Price, low to high</a>
-                      <a class="dropdown-item" href="#">Price, high to low</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <div class="row col-md-12" id="pre_school_frock">
+              <h3 class="text-center text-black mb-5">Pre School Frock</h3>
             </div>
             <div class="row mb-5">
+            
+              
               <?php
 
-              $query = "SELECT * FROM uniform";
+              $query = "SELECT * FROM uniform WHERE c_name = 'Pre school frock'";
+              $query_run = mysqli_query($con, $query);
+
+              if (mysqli_num_rows($query_run) > 0) {
+                foreach ($query_run as $uni) {
+              ?>
+                  <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
+                    <div class="block-4 text-center border">
+                      <figure class="block-4-image">
+                        <a href="uniform-single.php?uniform_id=<?php echo $uni['uniform_ID']; ?>"><?php echo '<img src="data:image;base64,' . base64_encode($uni['u_image']) . '" alt="Image placeholder" style="width: 400px;height:300px;" class="img-fluid">'; ?></a>
+                      </figure>
+                      <div class="block-4-text p-4">
+                        <h3><a href="uniform-single.php"><?= $uni['u_name'] ?></a></h3>
+                        <p class="mb-0"><?= $uni['u_description'] ?></p>
+
+                      </div>
+                    </div>
+                  </div>
+
+                <?php
+                }
+              } else {
+                ?>
+                <P>No Record Found</p>
+              <?php
+              }
+              ?>
+            </div>
+            <div class="row col-md-12" id="school_frock">
+            <h3 class="text-center text-black mb-5">School Frock</h3>
+            </div>
+            <div class="row mb-5">
+            
+              
+              <?php
+
+              $query = "SELECT * FROM uniform WHERE c_name = 'School frock'";
               $query_run = mysqli_query($con, $query);
 
               if (mysqli_num_rows($query_run) > 0) {
@@ -251,7 +261,159 @@ include('config/dbcon.php');
                   <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                     <div class="block-4 text-center border">
                       <figure class="block-4-image">
-                        <a href="uniform-single.php?uniform_id=<?php echo $uni['uniform_ID']; ?>"><?php echo '<img src="data:image;base64,' . base64_encode($uni['u_image']) . '" alt="Image placeholder" class="img-fluid">'; ?></a>
+                        <a href="uniform-single.php?uniform_id=<?php echo $uni['uniform_ID']; ?>"><?php echo '<img src="data:image;base64,' . base64_encode($uni['u_image']) . '" alt="Image placeholder" style="width: 400px;height:300px;" class="img-fluid">'; ?></a>
+                      </figure>
+                      <div class="block-4-text p-4">
+                        <h3><a href="uniform-single.php"><?= $uni['u_name'] ?></a></h3>
+                        <p class="mb-0"><?= $uni['u_description'] ?></p>
+
+                      </div>
+                    </div>
+                  </div>
+
+                <?php
+                }
+              } else {
+                ?>
+                <P>No Record Found</p>
+              <?php
+              }
+              ?>
+            </div>
+            <div class="row col-md-12" id="shirt">
+            <h3 class="text-center text-black mb-5">Shirt</h3>
+            </div>
+            <div class="row mb-5">
+            
+              
+              <?php
+
+              $query = "SELECT * FROM uniform WHERE c_name = 'Shirt'";
+              $query_run = mysqli_query($con, $query);
+
+              if (mysqli_num_rows($query_run) > 0) {
+                foreach ($query_run as $uni) {
+              ?>
+
+
+                  <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
+                    <div class="block-4 text-center border">
+                      <figure class="block-4-image">
+                        <a href="uniform-single.php?uniform_id=<?php echo $uni['uniform_ID']; ?>"><?php echo '<img src="data:image;base64,' . base64_encode($uni['u_image']) . '" alt="Image placeholder" style="width: 400px;height:300px;" class="img-fluid">'; ?></a>
+                      </figure>
+                      <div class="block-4-text p-4">
+                        <h3><a href="uniform-single.php"><?= $uni['u_name'] ?></a></h3>
+                        <p class="mb-0"><?= $uni['u_description'] ?></p>
+
+                      </div>
+                    </div>
+                  </div>
+
+                <?php
+                }
+              } else {
+                ?>
+                <P>No Record Found</p>
+              <?php
+              }
+              ?>
+            </div>
+            <div class="row col-md-12" id="short">
+            <h3 class="text-center text-black mb-5">Short</h3>
+            </div>
+            <div class="row mb-5">
+            
+              
+              <?php
+
+              $query = "SELECT * FROM uniform WHERE c_name = 'Short'";
+              $query_run = mysqli_query($con, $query);
+
+              if (mysqli_num_rows($query_run) > 0) {
+                foreach ($query_run as $uni) {
+              ?>
+
+
+                  <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
+                    <div class="block-4 text-center border">
+                      <figure class="block-4-image">
+                        <a href="uniform-single.php?uniform_id=<?php echo $uni['uniform_ID']; ?>"><?php echo '<img src="data:image;base64,' . base64_encode($uni['u_image']) . '" alt="Image placeholder" style="width: 400px;height:300px;" class="img-fluid">'; ?></a>
+                      </figure>
+                      <div class="block-4-text p-4">
+                        <h3><a href="uniform-single.php"><?= $uni['u_name'] ?></a></h3>
+                        <p class="mb-0"><?= $uni['u_description'] ?></p>
+
+                      </div>
+                    </div>
+                  </div>
+
+                <?php
+                }
+              } else {
+                ?>
+                <P>No Record Found</p>
+              <?php
+              }
+              ?>
+            </div>
+            <div class="row col-md-12" id="skirt">
+            <h3 class="text-center text-black mb-5">Skirt</h3>
+            </div>
+            <div class="row mb-5">
+            
+              
+              <?php
+
+              $query = "SELECT * FROM uniform WHERE c_name = 'Skirt'";
+              $query_run = mysqli_query($con, $query);
+
+              if (mysqli_num_rows($query_run) > 0) {
+                foreach ($query_run as $uni) {
+              ?>
+
+
+                  <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
+                    <div class="block-4 text-center border">
+                      <figure class="block-4-image">
+                        <a href="uniform-single.php?uniform_id=<?php echo $uni['uniform_ID']; ?>"><?php echo '<img src="data:image;base64,' . base64_encode($uni['u_image']) . '" alt="Image placeholder" style="width: 400px;height:300px;" class="img-fluid">'; ?></a>
+                      </figure>
+                      <div class="block-4-text p-4">
+                        <h3><a href="uniform-single.php"><?= $uni['u_name'] ?></a></h3>
+                        <p class="mb-0"><?= $uni['u_description'] ?></p>
+
+                      </div>
+                    </div>
+                  </div>
+
+                <?php
+                }
+              } else {
+                ?>
+                <P>No Record Found</p>
+              <?php
+              }
+              ?>
+            </div>
+            <div class="row col-md-12" id="trouser">
+            <h3 class="text-center text-black mb-5">Trouser</h3>
+            </div>
+            <div class="row mb-5">
+            
+              
+              <?php
+
+              $query = "SELECT * FROM uniform WHERE c_name = 'Trouser'";
+              $query_run = mysqli_query($con, $query);
+
+              if (mysqli_num_rows($query_run) > 0) {
+                foreach ($query_run as $uni) {
+              ?>
+
+
+                  <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
+                    <div class="block-4 text-center border">
+                      <figure class="block-4-image">
+                        <a href="uniform-single.php?uniform_id=<?php echo $uni['uniform_ID']; ?>"><?php echo '<img src="data:image;base64,' . base64_encode($uni['u_image']) . '" alt="Image placeholder" style="width: 400px;height:300px;" class="img-fluid">'; ?></a>
                       </figure>
                       <div class="block-4-text p-4">
                         <h3><a href="uniform-single.php"><?= $uni['u_name'] ?></a></h3>
@@ -287,50 +449,18 @@ include('config/dbcon.php');
             </div>
           </div>
 
-          <div class="col-md-3 order-1 mb-5 mb-md-0">
-            <div class="border p-4 rounded mb-4">
-              <h3 class="mb-3 h6 text-uppercase text-black d-block">Categories</h3>
-              <ul class="list-unstyled mb-0">
-                <li class="mb-1"><a href="#" class="d-flex"><span>Pre school frock</span> </a></li>
-                <li class="mb-1"><a href="#" class="d-flex"><span>School frock</span> </span></a></li>
-                <li class="mb-1"><a href="#" class="d-flex"><span>Skirt</span> </a></li>
-                <li class="mb-1"><a href="#" class="d-flex"><span>Shirt</span> </a></li>
-                <li class="mb-1"><a href="#" class="d-flex"><span>Short</span> </span></a></li>
-                <li class="mb-1"><a href="#" class="d-flex"><span>Trouser</span> </a></li>
-              </ul>
+          <div class="col-md-3 order-1 mb-5 mb-md-0" >
+            <div class="border p-4 rounded mb-4 list-group">
+              <h3 class="mb-3 h6 text-uppercase text-black d-block">Filter by Categories</h3>
+              <a href="#pre_school_frock">Pre School Frock</a>
+              <a href="#school_frock">School Frock</a>
+              <a href="#skirt">Skirt</a>
+              <a href="#short">Short</a>
+              <a href="#shirt">Shirt</a>
+              <a href="#trouser">Trouser</a>
             </div>
 
-            <div class="border p-4 rounded mb-4">
-              <div class="mb-4">
-                <h3 class="mb-3 h6 text-uppercase text-black d-block">Filter by Size</h3>
-                <div id="slider-range" class="border-primary"></div>
-                <input type="text" name="text" id="amount" class="form-control border-0 pl-0 bg-white" disabled="" />
-              </div>
-
-              <div class="mb-4">
-                <label for="s_sm" class="d-flex">
-                  <input type="checkbox" id="s_sm" class="mr-2 mt-1"> <span class="text-black">Size 2</span>
-                </label>
-                <label for="s_md" class="d-flex">
-                  <input type="checkbox" id="s_md" class="mr-2 mt-1"> <span class="text-black">Size 4</span>
-                </label>
-                <label for="s_lg" class="d-flex">
-                  <input type="checkbox" id="s_lg" class="mr-2 mt-1"> <span class="text-black">Size 6</span>
-                </label>
-                <label for="s_sm" class="d-flex">
-                  <input type="checkbox" id="s_sm" class="mr-2 mt-1"> <span class="text-black">Size 8</span>
-                </label>
-                <label for="s_md" class="d-flex">
-                  <input type="checkbox" id="s_md" class="mr-2 mt-1"> <span class="text-black">Size 10</span>
-                </label>
-                <label for="s_lg" class="d-flex">
-                  <input type="checkbox" id="s_lg" class="mr-2 mt-1"> <span class="text-black">Size 12</span>
-                </label>
-              </div>
-
-
-
-            </div>
+            
           </div>
         </div>
 
@@ -363,7 +493,7 @@ include('config/dbcon.php');
             <div class="block-5 mb-5">
               <h3 class="footer-heading mb-4">Contact Info</h3>
               <ul class="list-unstyled">
-                <li class="address dark">Kiridigalla road,Polgolla,Gokarella,Kurunegala</li>
+                <li class="address text-dark">Kiridigalla road,Polgolla,Gokarella,Kurunegala</li>
                 <li class="phone"><a href="tel://23923929210">+94 77 946 9179</a></li>
                 <li class="email"><a href="mailto:jayamalitext@gmail.com">jayamalitext@gmail.com</a></li>
               </ul>
@@ -390,6 +520,7 @@ include('config/dbcon.php');
 
   <script src="js/jquery-ui.js"></script>
   <script src="js/popper.min.js"></script>
+  <script src="js/jquery-3.3.1.min.js"></script>
 
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/jquery.magnific-popup.min.js"></script>
@@ -419,6 +550,47 @@ include('config/dbcon.php');
       }
     });
   </script>
+<script type="text/javascript">
+  $(document).ready(function(){
+
+    filter_data();
+    function filter_data()
+    {
+      var fetch = 'fetch_data';
+      var brand = get_filter('brand');
+
+      $.ajax({
+        url: 'code.php',
+        method: 'POST',
+        data: {
+          fetch:fetch,
+          brand:brand
+          },
+        success:function(data){
+          $(".filter_data").html(data);
+          
+        }
+
+      });     
+
+    }
+   
+
+    function get_filter(class_name){
+      var filter = [];
+      $('.'+class_name+':checked').each(function(){
+        filter.push($(this).val());
+      });
+      return filter;
+    }
+
+    $('.comman_selector').click(function(){
+      filter_data();
+    });
+
+  });
+</script>
+
 
 </body>
 

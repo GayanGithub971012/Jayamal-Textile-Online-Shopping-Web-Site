@@ -204,7 +204,7 @@ include('config/dbcon.php');
         <?php
       include('../admin/message.php');
     ?>
-          <h3 class="hny-title text-center mb-0 ">Customers <span class="text-warning">Love</span></h3>
+          <h3 class="hny-title text-center mb-0 ">Customers <span class="text-warning">FEEDBACK</span></h3>
           <p class="mb-5 text-center">What People Say</p>
           <div class="row customerhny my-lg-5 my-4">
             <div class="col-md-12">
@@ -319,13 +319,12 @@ include('config/dbcon.php');
               <div class="p-3 p-lg-5 border">
                 <div class="form-group row">
                   <div class="col-md-12">
-                    <label for="message" class="text-black">Message</label>
                     <textarea name="message" id="message" cols="30" rows="7" class="form-control"></textarea>
                   </div>
                 </div>
                 <div class="form-group row">
                   <div class="col-lg-12">
-                    <input type="submit" name="addfeedback" class="btn btn-dark btn-lg btn-block" value="Send Message">
+                    <input type="submit" name="addfeedback" class="btn btn-dark btn-lg btn-block" value="Send Feedback">
                   </div>
                 </div>
               </div>

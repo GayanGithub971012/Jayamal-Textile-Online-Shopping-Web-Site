@@ -53,10 +53,10 @@ if (isset($_POST['addfeedback'])) {
     $user_query_run = mysqli_query($con, $user_query);
 
     if ($user_query_run) {
-        $_SESSION['status'] = "Sent your";
+        $_SESSION['status'] = "Sent your feedback";
         header("Location: feedback.php");
     } else {
-        $_SESSION['status'] = "Failed to sending";
+        $_SESSION['status'] = "Failed to sending your feedback";
         header("Location: feedback.php");
     }
 }
@@ -242,9 +242,6 @@ if (isset($_SESSION['auth_user'])) {
         $postal = $_POST['postal'];
         $due_date = $_POST['due_date'];
         $order_date = date("Y-m-d");
-
-
-
 
         $data = '';
 
@@ -601,6 +598,7 @@ if (isset($_POST['AddCuniform'])) {
 
 }
 ?>
+
 
 
 

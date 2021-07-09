@@ -194,7 +194,7 @@ include('config/dbcon.php');
       </nav>
     </header>
 
-    <div class="site-blocks-cover" style="background-image: url(images/bgimage_4.jpg);" data-aos="fade">
+    <div class="site-blocks-cover" id="background" data-aos="fade">
       <div class="container">
         <div class="row align-items-start align-items-md-center justify-content-end">
           <div class="col-lg-12 text-center  pt-5 pt-md-0">
@@ -364,7 +364,7 @@ include('config/dbcon.php');
   <script src="js/aos.js"></script>
 
   <script src="js/main.js"></script>
-
+  <script src="js/background.js"></script>
 
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js'></script>

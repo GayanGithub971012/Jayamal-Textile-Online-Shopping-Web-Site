@@ -107,7 +107,7 @@
         </li>
         <li class="nav-header">Settings</li>
         <li class="nav-item">
-          <a href="pages/calendar.html" class="nav-link">
+          <a href="./adminprofile.php" class="nav-link">
             <i class="nav-icon far fa-user"></i>
             <p>
               Admin Profile
