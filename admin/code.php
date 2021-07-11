@@ -143,10 +143,8 @@ if(isset($_POST['addUser_website']))
                 else
                 {
                     //Available = Record not found
-                    $user_query = "INSERT INTO users (username,phonenumber,email,password) VALUES ('$username','$phone','$email','$password')";
+                    $user_query = "INSERT INTO users (username,phonenumber,email,password,first_name,last_name,address) VALUES ('$username','$phone','$email','$password','$firstname','$lastname','$address')";
                     $user_query_run = mysqli_query($con, $user_query);
-                    $user_query1 = "INSERT INTO customer (firstname,lastname,address) VALUES ('$firstname','$lastname','$address')";
-                    $user_query_run1 = mysqli_query($con, $user_query1);
 
                     if($user_query_run)
                     {

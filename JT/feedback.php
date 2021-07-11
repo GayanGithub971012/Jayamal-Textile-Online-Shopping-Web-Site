@@ -360,7 +360,40 @@ include('config/dbcon.php');
               <div class="p-3 p-lg-5 border">
                 <div class="form-group row">
                   <div class="col-md-12">
-                    <textarea name="message" id="message" cols="30" rows="7" class="form-control"></textarea>
+                    <label for="q_01" class="text-black">How satisfied about the uniform?<span class="text-danger">*</span></label>
+                    <select class="form-control" name="q_01" id="q_01" required>
+                      <option></option>
+                      <option>Satisfied</option>
+                      <option>Fair-minded</option>
+                      <option>Not satisfied</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-md-12">
+                    <label for="q_02" class="text-black">What's your idea about the prices of the uniforms?<span class="text-danger">*</span></label>
+                    <select class="form-control" name="q_02" id="q_02" required>
+                      <option></option>
+                      <option>Fair prices</option>
+                      <option>Very expensive</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-md-12">
+                    <label for="q_03" class="text-black">What do you think about your overall process?<span class="text-danger">*</span></label>
+                    <select class="form-control" name="q_03" id="q_03" required>
+                      <option></option>
+                      <option>Satisfied</option>
+                      <option>Fair-minded</option>
+                      <option>Not satisfied</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-md-12">
+                    <label for="message" class="text-black">Extra note<span class="text-danger"></span></label>
+                    <textarea name="message" id="message" cols="30" rows="4" class="form-control"></textarea>
                   </div>
                 </div>
                 <div class="form-group row">

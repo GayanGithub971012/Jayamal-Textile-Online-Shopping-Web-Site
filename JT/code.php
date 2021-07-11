@@ -47,10 +47,13 @@ if (isset($_POST['addfeedback'])) {
     if (isset($_SESSION['auth_user'])) {
     
     $date = date("Y-m-d");
+    $q_01 = $_POST['q_01'];
+    $q_02 = $_POST['q_02'];
+    $q_03 = $_POST['q_03'];
     $message = $_POST['message'];
     $user_id = $_SESSION['auth_user']['user_id'];
 
-    $user_query = "INSERT INTO feedback (user_ID,f_date,f_description) VALUES ('$user_id','$date','$message')";
+    $user_query = "INSERT INTO feedback (user_ID,f_date,f_q_1,f_q_2,f_q_3,f_description) VALUES ('$user_id','$date','$q_01','$q_02','$q_03','$message')";
     $user_query_run = mysqli_query($con, $user_query);
 
     if ($user_query_run) {

@@ -210,7 +210,7 @@ include('config/dbcon.php');
           </div>
           <div class="col-md-6">
 
-            <form id="contact-form" name="contact-form" action="mailto:mglmuthukumara@gmail.com?cc=nimmi.jayamali@gmail.com&subject='<? $_GET['subject'] ?>'" method="POST" enctype="text/plain">
+            <form id="contact-form" name="contact-form" action="mailto:jayamaltextile@gmail.com?cc=nimmi.jayamali@gmail.com&subject='<? $_GET['subject'] ?>'" method="POST" enctype="text/plain">
 
               <div class="p-3 p-lg-5 border">
                 <div class="form-group row">
