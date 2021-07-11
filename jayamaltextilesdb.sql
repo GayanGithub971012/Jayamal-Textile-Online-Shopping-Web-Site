@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 11, 2021 at 04:24 AM
+-- Generation Time: Jul 11, 2021 at 09:53 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -177,7 +177,8 @@ CREATE TABLE `orderdetails` (
 --
 
 INSERT INTO `orderdetails` (`order_ID`, `uniform_ID`, `user_ID`, `selected_size`, `price`, `quantity`, `total_price`) VALUES
-(34, 'ski_35', 2, 'Can be change', 63534, 8, 508272);
+(34, 'ski_35', 2, 'Can be change', 63534, 8, 508272),
+(62, 'pre_1', 30, 'size2', 632, 1, 632);
 
 -- --------------------------------------------------------
 
@@ -380,7 +381,7 @@ ALTER TABLE `feedback`
 -- AUTO_INCREMENT for table `orderdetails`
 --
 ALTER TABLE `orderdetails`
-  MODIFY `order_ID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `order_ID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT for table `orders`
