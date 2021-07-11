@@ -249,7 +249,7 @@ if (isset($_SESSION['auth_user'])) {
     // Checkout and save customer info in the orders table
     if (isset($_POST['action']) && isset($_POST['action']) == 'order') {
         $user_id = $_POST['user_id'];
-        $products = $_POST['products'];
+        
         $grand_total = $_POST['grand_total'];
         $address = $_POST['address'];
         $district = $_POST['district'];
@@ -258,9 +258,20 @@ if (isset($_SESSION['auth_user'])) {
 
         $data = '';
 
-        $stmt = $con->prepare('INSERT INTO orders (user_ID,orders,order_date,due_date,delivery_address,district)VALUES(?,?,?,?,?,?)');
-        $stmt->bind_param('ssssss', $user_id, $products, $order_date, $due_date, $address, $district);
+        $sql = "SELECT uniform_ID,quantity FROM orderdetails WHERE user_ID = '$user_id'";
+        $stmt = $con->prepare($sql);
         $stmt->execute();
+        $result = $stmt->get_result();
+        while ($row = $result->fetch_assoc()) {
+            $products = $row['uniform_ID'];
+            $qty = $row['quantity'];
+
+            $stmt = $con->prepare('INSERT INTO orders (user_ID,orders,quantity,order_date,due_date,delivery_address,district)VALUES(?,?,?,?,?,?,?)');
+            $stmt->bind_param('sssssss', $user_id, $products,$qty ,$order_date, $due_date, $address, $district);
+            $stmt->execute();
+            
+        }
+
         $stmt2 = $con->prepare("DELETE FROM orderdetails WHERE user_ID = '$user_id'");
         $stmt2->execute();
         $data .= '<div class="site-section">

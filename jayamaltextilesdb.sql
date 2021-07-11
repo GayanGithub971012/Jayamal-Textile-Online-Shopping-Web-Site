@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 11, 2021 at 09:53 PM
+-- Generation Time: Jul 12, 2021 at 01:28 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -95,10 +95,7 @@ INSERT INTO `customizeduniform` (`cu_ID`, `institution`, `color`, `fabric_Type`,
 (33, 'tfyh', 'gyhg', 'Denim', 'htgh', 0x63796265722e504e47, 10, 10, 10, 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1:09:43 AMJun/27/2021'),
 (34, 'test1', 'test1', 'Denim', 'dfg', 0x63796265722e504e47, NULL, 4, 4, 4, NULL, NULL, NULL, NULL, NULL, 4, 4, '1:13:47 AMJun/27/2021'),
 (35, 'test1', 'test1', 'Denim', 'ererere', 0x626f792d7573696e672d6869732d6c6170746f702d636f6d70757465722e6a7067, 8, 8, 8, 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1:26:48 AMJun/27/2021'),
-(36, 'fg', 'test', 'Cotton', 'gfjfgjjj', 0x46425f494d475f313632353538393039373139392e6a7067, 45, 45, 50, 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '6:53:31 AMJul/09/2021'),
-(37, '', '', 'Cotton', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, '13:37:19 PMJul/09/2021'),
-(38, 'today', 'today', 'Denim', 'today', 0x53637265656e73686f74202831292e706e67, 13, 13, 13, 13, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '3:32:16 AMJul/11/2021'),
-(39, 'test5', 'dfgsfdhfdh', 'Denim', 'gyrty', 0x53637265656e73686f74202834292e706e67, 1, 1, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '4:14:43 AMJul/11/2021');
+(36, 'fg', 'test', 'Cotton', 'gfjfgjjj', 0x46425f494d475f313632353538393039373139392e6a7067, 45, 45, 50, 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '6:53:31 AMJul/09/2021');
 
 -- --------------------------------------------------------
 
@@ -117,7 +114,7 @@ CREATE TABLE `fabric` (
 --
 
 INSERT INTO `fabric` (`fabric_Type`, `fabric_Info`, `extra_cost`) VALUES
-('Cotton', 'jygvdefsydhvbfkydgfkuysdhvbfukdfygvkuyhdfvbukdyfgvkdfhvbkdfyvgdfvdfbdgfbfgnfghnfghnfhnfhgnfghnfhgnhgnhgnn', 450),
+('Cotton', 'kuysdhvbfbfgnfghnfghnfhnfhg', 450),
 ('Denim', 'Fabrics are hot', 7896);
 
 -- --------------------------------------------------------
@@ -177,8 +174,7 @@ CREATE TABLE `orderdetails` (
 --
 
 INSERT INTO `orderdetails` (`order_ID`, `uniform_ID`, `user_ID`, `selected_size`, `price`, `quantity`, `total_price`) VALUES
-(34, 'ski_35', 2, 'Can be change', 63534, 8, 508272),
-(62, 'pre_1', 30, 'size2', 632, 1, 632);
+(69, 'ski_1', 30, 'size6', 450, 3, 1350);
 
 -- --------------------------------------------------------
 
@@ -190,6 +186,7 @@ CREATE TABLE `orders` (
   `order_ID` int(255) NOT NULL,
   `user_ID` int(255) NOT NULL,
   `orders` varchar(255) NOT NULL,
+  `quantity` int(100) NOT NULL,
   `order_date` date NOT NULL,
   `due_date` date NOT NULL,
   `delivery_address` varchar(255) NOT NULL,
@@ -201,11 +198,12 @@ CREATE TABLE `orders` (
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`order_ID`, `user_ID`, `orders`, `order_date`, `due_date`, `delivery_address`, `district`, `status`) VALUES
-(16, 30, '22(1), 23(2), 24(3), 25(4), 26(5), 27(5), 28(6)', '2021-06-26', '2021-06-19', 'Nikaweratiya', 'Matale', 'Packing'),
-(17, 2, 'ski_33(45), sho_34(4), sch_1(1)', '2021-06-27', '2021-06-19', 'rtgyrt', 'Matale', 'Processing'),
-(18, 30, 'ski_35(8), pre_1(1)', '2021-07-09', '2021-07-17', 'rtrt', 'Mullaitivu', ''),
-(20, 30, 'ski_35(8), pre_2(1), pre_2(1), pre_2(1), pre_2(1), pre_3(1), ski_38(15)', '2021-07-11', '2021-07-27', 'hhg', 'Polonnaruwa', '');
+INSERT INTO `orders` (`order_ID`, `user_ID`, `orders`, `quantity`, `order_date`, `due_date`, `delivery_address`, `district`, `status`) VALUES
+(21, 30, 'pre_1', 0, '2021-07-11', '2021-07-06', 'h', 'Badulla', 'Order Confirmed'),
+(22, 30, 'sch_1', 0, '2021-07-11', '2021-07-06', 'h', 'Badulla', ''),
+(24, 2, 'ski_35', 8, '2021-07-11', '2021-07-14', 'Gokarella', 'Kurunegala', ''),
+(25, 2, 'sch_3', 1, '2021-07-11', '2021-07-14', 'Gokarella', 'Kurunegala', ''),
+(27, 2, 'pre_1', 1, '2021-07-12', '2021-07-30', 'dsd', 'Matale', '');
 
 -- --------------------------------------------------------
 
@@ -269,7 +267,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_ID`, `username`, `phonenumber`, `email`, `password`, `first_name`, `last_name`, `address`, `uType_ID`) VALUES
-(1, 'Gayan', 779469179, 'mglmuthukumara@gmail.com', '12345678', '', '', '', 1),
+(1, 'Gayan', 779469179, 'mglmuthukumara@gmail.com', '12345678', 'Gayan', 'Muthukumara', 'Meegahamulawaththa', 1),
 (2, 'Nimmi', 767960071, 'Jayamali@gmail.com', '123', '', '', '', 2),
 (20, 'Supun', 714567891, 'supun@gmail.com', '456', '', '', '', 2),
 (21, 'Nuwantha', 714940603, 'nuwantha@gmail.com', '159263', '', '', '', 2),
@@ -381,13 +379,13 @@ ALTER TABLE `feedback`
 -- AUTO_INCREMENT for table `orderdetails`
 --
 ALTER TABLE `orderdetails`
-  MODIFY `order_ID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `order_ID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `order_ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `users`

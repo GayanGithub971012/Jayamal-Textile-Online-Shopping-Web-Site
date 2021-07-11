@@ -17,12 +17,6 @@ include('includes/sidebar.php');
                 <div class="col-md-12">
                     <?php include('message.php'); ?>
                     <div class="card">
-                        <div class="card-header">
-                            <h4>
-                                Order Details
-                                <a href="order-add.php" class="btn btn-primary float-right">Add</a>
-                            </h4>
-                        </div>
                         <div class="card-body">
                             <table class="table table-bordered">
                                 <thead>
@@ -32,8 +26,6 @@ include('includes/sidebar.php');
                                         <th>Selected Size</th>
                                         <th>Quantity</th>
                                         <th>Sub Total</th>
-                                        <th>Edit</th>
-                                        <th>Delete</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -51,15 +43,6 @@ include('includes/sidebar.php');
                                                 <td><?= $order['selected_size'] ?></td>
                                                 <td><?= $order['quantity'] ?></td>
                                                 <td><?= $order['total_price'] ?></td>
-                                                <td>
-                                                    <a href="product-edit.php?prod_id=<?php echo $prod_item['id']; ?>" class="btn btn-success">Edit</a>
-                                                </td>
-                                                <td>
-                                                    <form action="code.php" method="POST">
-                                                        <input type="hidden" name="prod_delete_id" value="<?= $order['order_ID']; ?>">
-                                                        <button type="submit" name="prod_delete_btn" class="btn btn-danger">Delete</button>
-                                                    </form>
-                                                </td>
                                             </tr>
                                         <?php
                                         }

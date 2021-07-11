@@ -54,16 +54,28 @@ include('config/dbcon.php');
                       ?>
                             <input type="hidden" name="user_id" value="<?php echo $row['user_ID'] ?>">
                             <div class="form-group">
-                              <lable for="">Name</lable>
+                              <lable for="">User Name</lable>
                               <input type="text" name="username" value="<?php echo $row['username'] ?>" class="form-control" placeholder="Name" readonly>
-                            </div>
-                            <div class="form-group">
-                              <lable for="">Phone Number</lable>
-                              <input type="text" name="phonenumber" value="<?php echo $row['phonenumber'] ?>" class="form-control" placeholder="Phone Number">
                             </div>
                             <div class="form-group">
                               <lable for="">Email Id</lable>
                               <input type="email" name="email" value="<?php echo $row['email'] ?>" class="form-control" placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                              <lable for="">First Name</lable>
+                              <input type="first_name" name="first_name" value="<?php echo $row['first_name'] ?>" class="form-control" placeholder="First Name">
+                            </div>
+                            <div class="form-group">
+                              <lable for="">Last Name</lable>
+                              <input type="last_name" name="last_name" value="<?php echo $row['last_name'] ?>" class="form-control" placeholder="Last Name">
+                            </div>
+                            <div class="form-group">
+                              <lable for="">Address</lable>
+                              <input type="address" name="address" value="<?php echo $row['address'] ?>" class="form-control" placeholder="Address">
+                            </div>
+                            <div class="form-group">
+                              <lable for="">Phone Number</lable>
+                              <input type="text" name="phonenumber" value="<?php echo $row['phonenumber'] ?>" class="form-control" placeholder="Phone Number">
                             </div>
                             <div class="form-group">
                               <lable for="">Password</lable>

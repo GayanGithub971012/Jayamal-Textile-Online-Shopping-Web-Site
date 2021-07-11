@@ -240,10 +240,13 @@ if(isset($_POST['updateUser']))
     $name = $_POST['username'];
     $phone = $_POST['phonenumber'];
     $email = $_POST['email'];
+    $first_name = $_POST['first_name'];
+    $last_name = $_POST['last_name'];
+    $address = $_POST['address'];
     $password = $_POST['password'];
     $uType_ID = $_POST['uType_ID'];
 
-    $query = "UPDATE users SET username='$name', phonenumber='$phone', email='$email', password='$password', uType_ID='$uType_ID' WHERE user_ID='$user_id' ";
+    $query = "UPDATE users SET username='$name', phonenumber='$phone', email='$email', password='$password',first_name='$first_name' ,last_name='$last_name',address='$address' ,uType_ID='$uType_ID' WHERE user_ID='$user_id' ";
     $query_run = mysqli_query($con, $query);
 
     if($query_run)
@@ -432,7 +435,26 @@ if(isset($_POST['deleteUniform']))
     }
 
 }
+//customizeduniform table delete data from admin panel
+if(isset($_POST['deleteCusuniform']))
+{
+    $cu_ID = $_POST['cud_uni_id'];
+   
+    $query = "DELETE FROM customizeduniform WHERE cu_ID='$cu_ID' ";
+    $query_run = mysqli_query($con, $query);
 
+    if($query_run)
+    {
+        $_SESSION['status'] = "Customized uniform Deleted Successfully";
+        header("Location: customizeduniform.php");
+    }
+    else
+    {
+        $_SESSION['status'] = "Customized uniform Deleting Failed";
+        header("Location: customizeduniform.php");
+    }
+
+}
 
 //orders table edit data from admin panel
 if(isset($_POST['editOrders']))

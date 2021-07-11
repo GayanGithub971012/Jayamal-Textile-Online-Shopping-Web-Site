@@ -30,9 +30,10 @@ include('includes/sidebar.php');
                                         <th>Feedback ID</th>
                                         <th>User ID</th>
                                         <th>Feedback Date</th>
+                                        <th>Q 01</th>
+                                        <th>Q 02</th>
+                                        <th>Q 03</th>
                                         <th>Feedback Description</th>
-                                        <th>Edit</th>
-                                        <th>Delete</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -48,16 +49,10 @@ include('includes/sidebar.php');
                                                 <td><?= $fed['feedback_ID'] ?></td>
                                                 <td><?= $fed['user_ID'] ?></td>
                                                 <td><?= $fed['f_date'] ?></td>
+                                                <td><?= $fed['f_q_1'] ?></td>
+                                                <td><?= $fed['f_q_2'] ?></td>
+                                                <td><?= $fed['f_q_3'] ?></td>
                                                 <td><?= $fed['f_description'] ?></td>
-                                                <td>
-                                                    <a href="product-edit.php?prod_id=<?php echo $prod_item['id']; ?>" class="btn btn-success">Edit</a>
-                                                </td>
-                                                <td>
-                                                    <form action="code.php" method="POST">
-                                                        <input type="hidden" name="prod_delete_id" value="<?= $fed['feedback_ID']; ?>">
-                                                        <button type="submit" name="prod_delete_btn" class="btn btn-danger">Delete</button>
-                                                    </form>
-                                                </td>
                                             </tr>
                                         <?php
                                         }

@@ -6,7 +6,32 @@ include('includes/header.php');
 include('includes/topbar.php');
 include('includes/sidebar.php');
 ?>
-
+<!--Delete User Modal -->
+<div class="modal fade" id="DeletModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete User</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="code.php" method="POST">
+        <div class="modal-body">
+          <input type="hidden" name="cud_uni_id" class="delete_cus_uni_id">
+          <p>
+            Are you sure. you want to delete this data?
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" name="deleteCusuniform" class="btn btn-primary">Yes, Delete.!</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- End Delete User Model-->
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -24,7 +49,7 @@ include('includes/sidebar.php');
                             </h4>
                         </div>
                         <div class="card-body">
-                            <table class="table table-bordered">
+                            <table class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         <th>Uniform ID</th>
@@ -44,7 +69,6 @@ include('includes/sidebar.php');
                                         <th>Hip</th>
                                         <th>Bottom</th>
                                         <th>Fabric Type</th>
-                                        <th>Edit</th>
                                         <th>Delete</th>
                                     </tr>
                                 </thead>
@@ -76,13 +100,7 @@ include('includes/sidebar.php');
                                                 <td><?= $cus['bottom'] ?></td>
                                                 <td><?= $cus['fabric_Type'] ?></td>
                                                 <td>
-                                                    <a href="product-edit.php?prod_id=<?php echo $prod_item['id']; ?>" class="btn btn-success">Edit</a>
-                                                </td>
-                                                <td>
-                                                    <form action="code.php" method="POST">
-                                                        <input type="hidden" name="prod_delete_id" value="<?= $cus['cu_ID']; ?>">
-                                                        <button type="submit" name="prod_delete_btn" class="btn btn-danger">Delete</button>
-                                                    </form>
+                                                    <button type="button" value="<?php echo $cus['cu_ID']; ?>" class="btn btn-danger deletebtn">Delete</a>
                                                 </td>
                                             </tr>
                                         <?php
@@ -90,7 +108,7 @@ include('includes/sidebar.php');
                                     } else {
                                         ?>
                                         <tr>
-                                            <td colspan="19">No Record Found</td>
+                                            <td colspan="18">No Record Found</td>
                                         </tr>
                                     <?php
                                     }
@@ -107,4 +125,16 @@ include('includes/sidebar.php');
     </section>
 </div>
 <?php include('includes/script.php'); ?>
+<script>
+  $(document).ready(function() {
+    $('.deletebtn').click(function(e) {
+      e.preventDefault();
+
+      var user_id = $(this).val();
+      $('.delete_cus_uni_id').val(user_id);
+      $('#DeletModal').modal('show');
+
+    });
+  });
+</script>
 <?php include('includes/footer.php'); ?>

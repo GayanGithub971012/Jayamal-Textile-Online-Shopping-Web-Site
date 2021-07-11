@@ -56,12 +56,6 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="./customer.php" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Customer Table</p>
-              </a>
-            </li>
-            <li class="nav-item">
               <a href="./categoryprice.php" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Category Price Table</p>
