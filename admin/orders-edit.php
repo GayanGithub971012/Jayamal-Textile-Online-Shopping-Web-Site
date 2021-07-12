@@ -75,6 +75,14 @@ include('config/dbcon.php');
                                                             <input type="text" name="orders" value="<?php echo $ord['orders'] ?>" class="form-control" placeholder="Phone Number" readonly>
                                                         </div>
                                                         <div class="form-group">
+                                                            <lable for="">Quantity</lable>
+                                                            <input type="text" name="orders" value="<?php echo $ord['quantity'] ?>" class="form-control" placeholder="Phone Number" readonly>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <lable for="">Total Price</lable>
+                                                            <input type="text" name="orders" value="<?php echo $ord['total_price'] ?>" class="form-control" placeholder="Phone Number" readonly>
+                                                        </div>
+                                                        <div class="form-group">
                                                             <lable for="">delivery Address</lable>
                                                             <input type="text" name="delivery_address" value="<?php echo $ord['delivery_address'] ?>,<?php echo $ord['district'] ?>" class="form-control" placeholder="Phone Number" readonly>
                                                         </div>

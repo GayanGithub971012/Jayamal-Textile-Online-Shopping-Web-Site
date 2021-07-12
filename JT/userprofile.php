@@ -221,6 +221,7 @@ include('config/dbcon.php');
                                     <th>Due Date</th>
                                     <th>Orders</th>
                                     <th>Quantity</th>
+                                    <th>Total Price</th>
                                     <th>Delivery Address</th>
                                     <th>Status</th>
                                 </tr>
@@ -241,6 +242,7 @@ include('config/dbcon.php');
                                                 <td><?= $pro['due_date'] ?></td>
                                                 <td><?= $pro['orders'] ?></td>
                                                 <td><?= $pro['quantity'] ?></td>
+                                                <td><?= $pro['total_price'] ?></td>
                                                 <td><?= $pro['delivery_address'] ?>,<?= $pro['district'] ?></td>
                                                 <td><?= $pro['status'] ?></td>
                                             </tr>

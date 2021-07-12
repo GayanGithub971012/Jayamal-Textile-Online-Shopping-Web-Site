@@ -268,7 +268,7 @@ include('config/dbcon.php');
                             foreach ($query_run as $uni) {
                           ?>
 
-                              <option><?= $uni['fabric_Type'] ?></option>
+                              <option data-bs-toggle="tooltip" data-bs-placement="top" title="<?= $uni['fabric_Type'] ?>"><?= $uni['fabric_Type'] ?></option>
 
                             <?php
                             }

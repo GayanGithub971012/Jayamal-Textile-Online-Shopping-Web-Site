@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 12, 2021 at 01:28 AM
+-- Generation Time: Jul 12, 2021 at 05:54 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -169,13 +169,6 @@ CREATE TABLE `orderdetails` (
   `total_price` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `orderdetails`
---
-
-INSERT INTO `orderdetails` (`order_ID`, `uniform_ID`, `user_ID`, `selected_size`, `price`, `quantity`, `total_price`) VALUES
-(69, 'ski_1', 30, 'size6', 450, 3, 1350);
-
 -- --------------------------------------------------------
 
 --
@@ -187,6 +180,7 @@ CREATE TABLE `orders` (
   `user_ID` int(255) NOT NULL,
   `orders` varchar(255) NOT NULL,
   `quantity` int(100) NOT NULL,
+  `total_price` int(100) NOT NULL,
   `order_date` date NOT NULL,
   `due_date` date NOT NULL,
   `delivery_address` varchar(255) NOT NULL,
@@ -198,12 +192,17 @@ CREATE TABLE `orders` (
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`order_ID`, `user_ID`, `orders`, `quantity`, `order_date`, `due_date`, `delivery_address`, `district`, `status`) VALUES
-(21, 30, 'pre_1', 0, '2021-07-11', '2021-07-06', 'h', 'Badulla', 'Order Confirmed'),
-(22, 30, 'sch_1', 0, '2021-07-11', '2021-07-06', 'h', 'Badulla', ''),
-(24, 2, 'ski_35', 8, '2021-07-11', '2021-07-14', 'Gokarella', 'Kurunegala', ''),
-(25, 2, 'sch_3', 1, '2021-07-11', '2021-07-14', 'Gokarella', 'Kurunegala', ''),
-(27, 2, 'pre_1', 1, '2021-07-12', '2021-07-30', 'dsd', 'Matale', '');
+INSERT INTO `orders` (`order_ID`, `user_ID`, `orders`, `quantity`, `total_price`, `order_date`, `due_date`, `delivery_address`, `district`, `status`) VALUES
+(21, 30, 'pre_1', 0, 0, '2021-07-11', '2021-07-06', 'h', 'Badulla', 'Order Confirmed'),
+(22, 30, 'sch_1', 0, 0, '2021-07-11', '2021-07-06', 'h', 'Badulla', ''),
+(24, 2, 'ski_35', 8, 0, '2021-07-11', '2021-07-14', 'Gokarella', 'Kurunegala', ''),
+(25, 2, 'sch_3', 1, 0, '2021-07-11', '2021-07-14', 'Gokarella', 'Kurunegala', ''),
+(27, 2, 'pre_1', 1, 0, '2021-07-12', '2021-07-30', 'dsd', 'Matale', ''),
+(28, 30, 'ski_1', 3, 1850, '2021-07-12', '2021-07-20', 'sss', 'Kurunegala', ''),
+(29, 30, 'sho_1', 1, 1850, '2021-07-12', '2021-07-20', 'sss', 'Kurunegala', ''),
+(30, 30, 'pre_2', 1, 632, '2021-07-12', '2021-07-14', 'hhh', 'Anuradhapura', ''),
+(31, 30, 'sch_2', 2, 192, '2021-07-12', '2021-07-14', 'hhh', 'Anuradhapura', ''),
+(32, 30, 'shi_1', 4, 340, '2021-07-12', '2021-07-14', 'hhh', 'Anuradhapura', '');
 
 -- --------------------------------------------------------
 
@@ -379,13 +378,13 @@ ALTER TABLE `feedback`
 -- AUTO_INCREMENT for table `orderdetails`
 --
 ALTER TABLE `orderdetails`
-  MODIFY `order_ID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `order_ID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `order_ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `users`

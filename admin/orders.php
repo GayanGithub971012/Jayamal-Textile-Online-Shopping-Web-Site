@@ -55,6 +55,8 @@ include('includes/sidebar.php');
                                         <th>User ID</th>
                                         <th>Order Date</th>
                                         <th>Orders</th>
+                                        <th>Quantity</th>
+                                        <th>Total Price</th>
                                         <th>Due Date</th>
                                         <th>Delivery Address</th>
                                         <th>Status</th>
@@ -76,6 +78,8 @@ include('includes/sidebar.php');
                                                 <td><?= $order['user_ID'] ?></td>
                                                 <td><?= $order['order_date'] ?></td>
                                                 <td><?= $order['orders'] ?></td>
+                                                <td><?= $order['quantity'] ?></td>
+                                                <td><?= $order['total_price'] ?></td>
                                                 <td><?= $order['due_date'] ?></td>
                                                 <td><?= $order['delivery_address'] ?>,<?= $order['district'] ?></td>
                                                 <td><?= $order['status'] ?></td>
