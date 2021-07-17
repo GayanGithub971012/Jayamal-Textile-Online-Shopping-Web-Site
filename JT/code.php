@@ -258,7 +258,7 @@ if (isset($_SESSION['auth_user'])) {
 
         $data = '';
 
-        $sql = "SELECT uniform_ID,quantity,total_price FROM orderdetails WHERE user_ID = '$user_id'";
+        $sql = "SELECT uniform_ID,quantity,total_price,selected_size FROM orderdetails WHERE user_ID = '$user_id'";
         $stmt = $con->prepare($sql);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -266,9 +266,10 @@ if (isset($_SESSION['auth_user'])) {
             $products = $row['uniform_ID'];
             $qty = $row['quantity'];
             $total_price = $row['total_price'];
+            $size = $row['selected_size'];
 
-            $stmt = $con->prepare('INSERT INTO orders (user_ID,orders,quantity,total_price,order_date,due_date,delivery_address,district)VALUES(?,?,?,?,?,?,?,?)');
-            $stmt->bind_param('ssssssss', $user_id, $products, $qty,$total_price, $order_date, $due_date, $address, $district);
+            $stmt = $con->prepare('INSERT INTO orders (user_ID,orders,u_size,quantity,total_price,order_date,due_date,delivery_address,district)VALUES(?,?,?,?,?,?,?,?,?)');
+            $stmt->bind_param('sssssssss', $user_id, $products,$size, $qty,$total_price, $order_date, $due_date, $address, $district);
             $stmt->execute();
             
         }

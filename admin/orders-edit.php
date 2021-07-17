@@ -75,6 +75,10 @@ include('config/dbcon.php');
                                                             <input type="text" name="orders" value="<?php echo $ord['orders'] ?>" class="form-control" placeholder="Phone Number" readonly>
                                                         </div>
                                                         <div class="form-group">
+                                                            <lable for="">selected size</lable>
+                                                            <input type="text" name="u_size" value="<?php echo $ord['u_size'] ?>" class="form-control" placeholder="Phone Number" readonly>
+                                                        </div>
+                                                        <div class="form-group">
                                                             <lable for="">Quantity</lable>
                                                             <input type="text" name="orders" value="<?php echo $ord['quantity'] ?>" class="form-control" placeholder="Phone Number" readonly>
                                                         </div>
@@ -91,6 +95,7 @@ include('config/dbcon.php');
                                                             <select name="status" class="form-control" value="<?php echo $ord['status'] ?>">
                                                                 <option>Pending</option>
                                                                 <option>Order Confirmed</option>
+                                                                <option>Order Cancelled</option>
                                                                 <option>Processing</option>
                                                                 <option>Packing</option>
                                                                 <option>Delivering</option>
